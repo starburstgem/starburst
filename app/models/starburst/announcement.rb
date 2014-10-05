@@ -12,10 +12,10 @@ module Starburst
 		}
 
 		scope :unread_by, -> (current_user) { 
-			joins("LEFT JOIN announcement_views ON 
-				announcement_views.announcement_id = announcements.id AND 
-				announcement_views.user_id = #{Announcement.sanitize(current_user.id)}")
-			.where("announcement_views.announcement_id IS NULL AND announcement_views.user_id IS NULL")
+			joins("LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = #{Announcement.sanitize(current_user.id)}")
+			.where("starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL")
 		}
 
 		scope :in_delivery_order, -> { order("start_delivering_at ASC")}

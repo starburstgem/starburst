@@ -1,6 +1,6 @@
 class CreateAnnouncementTables < ActiveRecord::Migration
 	def change
-		create_table :starburst_announcements_reads do |t|
+		create_table :starburst_announcement_views do |t|
 			t.integer :user_id
 			t.integer :announcement_id
 			t.timestamps
