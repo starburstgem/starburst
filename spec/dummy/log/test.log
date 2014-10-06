@@ -6814,3 +6814,841 @@ Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms)
   [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-05 14:03:49.607931' OR start_delivering_at IS NULL) 
 				AND (stop_delivering_at > '2014-10-05 14:03:49.607933' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
   [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "Announcement text"], ["created_at", "2014-10-06 12:54:54.372612"], ["limit_to_users", nil], ["updated_at", "2014-10-06 12:54:54.372612"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 3ms
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "Announcement text"], ["created_at", "2014-10-06 12:54:54.427134"], ["limit_to_users", nil], ["updated_at", "2014-10-06 12:54:54.427134"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 2ms
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 12:54:54.434777"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n"], ["updated_at", "2014-10-06 12:54:54.434777"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 12:54:54.440611"], ["subscription", ""], ["updated_at", "2014-10-06 12:54:54.440611"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 12:54:54.444039"], ["subscription", "monthly"], ["updated_at", "2014-10-06 12:54:54.444039"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements"
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 12:54:54.449365"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n  :operator: =\n"], ["updated_at", "2014-10-06 12:54:54.449365"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 12:54:54.452651"], ["limit_to_users", "---\n- :field: free?\n  :value: true\n"], ["updated_at", "2014-10-06 12:54:54.452651"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 12:54:54.454756"], ["subscription", ""], ["updated_at", "2014-10-06 12:54:54.454756"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 12:54:54.456264"], ["subscription", "monthly"], ["updated_at", "2014-10-06 12:54:54.456264"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements"
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.461062"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 12:54:54.461062"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 12:54:54.462741' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 12:54:54.462744' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.466104"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 12:54:54.466104"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 12:54:54.467589' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 12:54:54.467592' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.470575"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 12:54:54.470575"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 12:54:54.472139' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 12:54:54.472142' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.475607"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-05 12:54:54.474361"], ["updated_at", "2014-10-06 12:54:54.475607"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 12:54:54.477226' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 12:54:54.477228' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.480304"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 12:54:54.479338"], ["updated_at", "2014-10-06 12:54:54.480304"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 12:54:54.481482' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 12:54:54.481484' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.484231"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 12:54:54.484231"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 12:54:54.485703' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 12:54:54.485706' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.488903"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 12:54:54.488903"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 12:54:54.490401' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 12:54:54.490403' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.493381"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 12:54:54.492701"], ["updated_at", "2014-10-06 12:54:54.493381"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 12:54:54.494726"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 12:54:54.494726"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 12:54:54.496028"], ["updated_at", "2014-10-06 12:54:54.496028"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 12:54:54.496919"], ["updated_at", "2014-10-06 12:54:54.496919"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["announcement_id", 1], ["created_at", "2014-10-06 12:54:54.508608"], ["updated_at", "2014-10-06 12:54:54.508608"], ["user_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 2 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.518735"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 12:54:54.518090"], ["updated_at", "2014-10-06 12:54:54.518735"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 12:54:54.520025"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 12:54:54.520025"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 12:54:54.521552"], ["updated_at", "2014-10-06 12:54:54.521552"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 12:54:54.522731"], ["updated_at", "2014-10-06 12:54:54.522731"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 12:54:54.526060"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 12:54:54.525386"], ["updated_at", "2014-10-06 12:54:54.526060"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 12:54:54.527326"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 12:54:54.527326"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 12:54:54.529330"], ["updated_at", "2014-10-06 12:54:54.529330"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["announcement_id", 1], ["created_at", "2014-10-06 12:54:54.530909"], ["updated_at", "2014-10-06 12:54:54.530909"], ["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE ((start_delivering_at < '2014-10-06 12:54:54.531870' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 12:54:54.531872' OR stop_delivering_at IS NULL)) AND (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)  ORDER BY start_delivering_at ASC
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)  [["body", "This is an announcement."], ["created_at", "2014-10-06 12:54:54.536143"], ["limit_to_users", nil], ["updated_at", "2014-10-06 12:54:54.536143"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "title", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "This is an announcement."], ["created_at", "2014-10-06 12:54:54.539152"], ["limit_to_users", nil], ["title", "Test title"], ["updated_at", "2014-10-06 12:54:54.539152"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.518398"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:00:09.518398"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:00:09.521302' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:00:09.521305' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.567438"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:00:09.567438"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:00:09.568548' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:00:09.568550' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.573438"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:00:09.573438"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:00:09.574726' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:00:09.574728' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.577812"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:00:09.576791"], ["updated_at", "2014-10-06 13:00:09.577812"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:00:09.579604' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:00:09.579614' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.582391"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:00:09.582391"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:00:09.583440' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:00:09.583441' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.585757"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:00:09.585757"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:00:09.587003' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:00:09.587005' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.589870"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-05 13:00:09.588915"], ["updated_at", "2014-10-06 13:00:09.589870"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:00:09.591375' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:00:09.591378' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "This is an announcement."], ["created_at", "2014-10-06 13:00:09.594707"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:00:09.594707"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["body", "This is an announcement."], ["created_at", "2014-10-06 13:00:09.598036"], ["limit_to_users", nil], ["title", "Test title"], ["updated_at", "2014-10-06 13:00:09.598036"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.601085"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:00:09.600394"], ["updated_at", "2014-10-06 13:00:09.601085"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:00:09.602682"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:00:09.602682"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 13:00:09.606273"], ["updated_at", "2014-10-06 13:00:09.606273"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["announcement_id", 1], ["created_at", "2014-10-06 13:00:09.620193"], ["updated_at", "2014-10-06 13:00:09.620193"], ["user_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE ((start_delivering_at < '2014-10-06 13:00:09.623954' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:00:09.623956' OR stop_delivering_at IS NULL)) AND (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)  ORDER BY start_delivering_at ASC
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:00:09.630834"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:00:09.630106"], ["updated_at", "2014-10-06 13:00:09.630834"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.632222"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:00:09.632222"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 13:00:09.633541"], ["updated_at", "2014-10-06 13:00:09.633541"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 13:00:09.634472"], ["updated_at", "2014-10-06 13:00:09.634472"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["announcement_id", 1], ["created_at", "2014-10-06 13:00:09.635540"], ["updated_at", "2014-10-06 13:00:09.635540"], ["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.3ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 2 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)
+  [1m[36m (0.9ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:00:09.643703"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:00:09.642925"], ["updated_at", "2014-10-06 13:00:09.643703"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.645193"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:00:09.645193"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 13:00:09.646520"], ["updated_at", "2014-10-06 13:00:09.646520"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 13:00:09.647684"], ["updated_at", "2014-10-06 13:00:09.647684"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.651659"], ["limit_to_users", "---\n- :field: free?\n  :value: true\n"], ["updated_at", "2014-10-06 13:00:09.651659"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:00:09.654259"], ["subscription", ""], ["updated_at", "2014-10-06 13:00:09.654259"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.656023"], ["subscription", "monthly"], ["updated_at", "2014-10-06 13:00:09.656023"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements"
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:00:09.659977"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n"], ["updated_at", "2014-10-06 13:00:09.659977"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.662903"], ["subscription", ""], ["updated_at", "2014-10-06 13:00:09.662903"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:00:09.665167"], ["subscription", "monthly"], ["updated_at", "2014-10-06 13:00:09.665167"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements"
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:00:09.668942"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n  :operator: =\n"], ["updated_at", "2014-10-06 13:00:09.668942"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)  [["body", "Announcement text"], ["created_at", "2014-10-06 13:00:09.678405"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:00:09.678405"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["announcement_id", 1], ["created_at", "2014-10-06 13:00:09.684074"], ["updated_at", "2014-10-06 13:00:09.684074"], ["user_id", 10]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+  [1m[35mStarburst::AnnouncementView Load (0.1ms)[0m  SELECT  "starburst_announcement_views".* FROM "starburst_announcement_views"   ORDER BY "starburst_announcement_views"."id" DESC LIMIT 1
+  [1m[36mStarburst::AnnouncementView Load (0.1ms)[0m  [1mSELECT "starburst_announcement_views".* FROM "starburst_announcement_views"[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "Announcement text"], ["created_at", "2014-10-06 13:00:09.689281"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:00:09.689281"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+  [1m[35mStarburst::AnnouncementView Load (0.1ms)[0m  SELECT "starburst_announcement_views".* FROM "starburst_announcement_views"
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.561098"], ["limit_to_users", "---\n- :field: free?\n  :value: true\n"], ["updated_at", "2014-10-06 13:01:33.561098"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:01:33.610738"], ["subscription", ""], ["updated_at", "2014-10-06 13:01:33.610738"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.613672"], ["subscription", "monthly"], ["updated_at", "2014-10-06 13:01:33.613672"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35m (0.9ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.618935"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n"], ["updated_at", "2014-10-06 13:01:33.618935"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:01:33.621009"], ["subscription", ""], ["updated_at", "2014-10-06 13:01:33.621009"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.622873"], ["subscription", "monthly"], ["updated_at", "2014-10-06 13:01:33.622873"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements"
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:01:33.627428"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n  :operator: =\n"], ["updated_at", "2014-10-06 13:01:33.627428"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.632274"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:01:33.631337"], ["updated_at", "2014-10-06 13:01:33.632274"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:01:33.633791' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:01:33.633794' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.638372"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:01:33.638372"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.5ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:01:33.640823' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:01:33.640825' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.644789"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:01:33.644789"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:01:33.646346' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:01:33.646348' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.649271"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-05 13:01:33.648416"], ["updated_at", "2014-10-06 13:01:33.649271"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:01:33.650742' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:01:33.650745' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.654033"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:01:33.654033"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:01:33.655484' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:01:33.655487' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.658306"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:01:33.658306"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:01:33.659823' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:01:33.659825' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.662933"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:01:33.662933"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:01:33.664429' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:01:33.664432' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "This is an announcement."], ["created_at", "2014-10-06 13:01:33.667600"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:01:33.667600"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["body", "This is an announcement."], ["created_at", "2014-10-06 13:01:33.670754"], ["limit_to_users", nil], ["title", "Test title"], ["updated_at", "2014-10-06 13:01:33.670754"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.675997"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:01:33.675236"], ["updated_at", "2014-10-06 13:01:33.675997"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:01:33.677469"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:01:33.677469"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 13:01:33.679042"], ["updated_at", "2014-10-06 13:01:33.679042"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["announcement_id", 1], ["created_at", "2014-10-06 13:01:33.693084"], ["updated_at", "2014-10-06 13:01:33.693084"], ["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.3ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE ((start_delivering_at < '2014-10-06 13:01:33.699143' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:01:33.699146' OR stop_delivering_at IS NULL)) AND (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)  ORDER BY start_delivering_at ASC
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:01:33.713021"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:01:33.711828"], ["updated_at", "2014-10-06 13:01:33.713021"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.714524"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:01:33.714524"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 13:01:33.715972"], ["updated_at", "2014-10-06 13:01:33.715972"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 13:01:33.716880"], ["updated_at", "2014-10-06 13:01:33.716880"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["announcement_id", 1], ["created_at", "2014-10-06 13:01:33.717943"], ["updated_at", "2014-10-06 13:01:33.717943"], ["user_id", 1]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 2 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:01:33.722795"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:01:33.721781"], ["updated_at", "2014-10-06 13:01:33.722795"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:01:33.724730"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:01:33.724730"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 13:01:33.726508"], ["updated_at", "2014-10-06 13:01:33.726508"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 13:01:33.728167"], ["updated_at", "2014-10-06 13:01:33.728167"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "Announcement text"], ["created_at", "2014-10-06 13:01:33.737042"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:01:33.737042"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 13:01:33.745433"], ["updated_at", "2014-10-06 13:01:33.745433"], ["user_id", 10]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+  [1m[36mStarburst::AnnouncementView Load (0.1ms)[0m  [1mSELECT  "starburst_announcement_views".* FROM "starburst_announcement_views"   ORDER BY "starburst_announcement_views"."id" DESC LIMIT 1[0m
+  [1m[35mStarburst::AnnouncementView Load (0.1ms)[0m  SELECT "starburst_announcement_views".* FROM "starburst_announcement_views"
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)  [["body", "Announcement text"], ["created_at", "2014-10-06 13:01:33.751769"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:01:33.751769"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1  [["id", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+  [1m[36mStarburst::AnnouncementView Load (0.1ms)[0m  [1mSELECT "starburst_announcement_views".* FROM "starburst_announcement_views"[0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "Announcement text"], ["created_at", "2014-10-06 13:02:18.502810"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:02:18.502810"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 13:02:18.567915"], ["updated_at", "2014-10-06 13:02:18.567915"], ["user_id", 10]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+  [1m[36mStarburst::AnnouncementView Load (0.1ms)[0m  [1mSELECT  "starburst_announcement_views".* FROM "starburst_announcement_views"   ORDER BY "starburst_announcement_views"."id" DESC LIMIT 1[0m
+  [1m[35mStarburst::AnnouncementView Load (0.1ms)[0m  SELECT "starburst_announcement_views".* FROM "starburst_announcement_views"
+  [1m[36m (0.8ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)  [["body", "Announcement text"], ["created_at", "2014-10-06 13:02:18.580943"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:02:18.580943"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1  [["id", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+  [1m[36mStarburst::AnnouncementView Load (0.1ms)[0m  [1mSELECT "starburst_announcement_views".* FROM "starburst_announcement_views"[0m
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "This is an announcement."], ["created_at", "2014-10-06 13:02:18.587769"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:02:18.587769"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["body", "This is an announcement."], ["created_at", "2014-10-06 13:02:18.590831"], ["limit_to_users", nil], ["title", "Test title"], ["updated_at", "2014-10-06 13:02:18.590831"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (5.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:18.599241"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n  :operator: =\n"], ["updated_at", "2014-10-06 13:02:18.599241"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:02:18.602650"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n"], ["updated_at", "2014-10-06 13:02:18.602650"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:18.609145"], ["subscription", ""], ["updated_at", "2014-10-06 13:02:18.609145"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:02:18.611120"], ["subscription", "monthly"], ["updated_at", "2014-10-06 13:02:18.611120"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements"
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:18.616579"], ["limit_to_users", "---\n- :field: free?\n  :value: true\n"], ["updated_at", "2014-10-06 13:02:18.616579"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:02:18.619202"], ["subscription", ""], ["updated_at", "2014-10-06 13:02:18.619202"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:18.620704"], ["subscription", "monthly"], ["updated_at", "2014-10-06 13:02:18.620704"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements"
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.625494"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:02:18.624782"], ["updated_at", "2014-10-06 13:02:18.625494"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:18.626808"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:18.626808"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 13:02:18.628013"], ["updated_at", "2014-10-06 13:02:18.628013"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 13:02:18.629573"], ["updated_at", "2014-10-06 13:02:18.629573"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)[0m
+  [1m[35m (0.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:18.639639"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:02:18.638548"], ["updated_at", "2014-10-06 13:02:18.639639"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.642816"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:18.642816"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 13:02:18.644185"], ["updated_at", "2014-10-06 13:02:18.644185"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 13:02:18.645014"], ["updated_at", "2014-10-06 13:02:18.645014"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 13:02:18.646009"], ["updated_at", "2014-10-06 13:02:18.646009"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 2 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)[0m
+  [1m[35m (3.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:18.653991"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:02:18.653197"], ["updated_at", "2014-10-06 13:02:18.653991"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.655431"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:18.655431"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 13:02:18.657232"], ["updated_at", "2014-10-06 13:02:18.657232"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["announcement_id", 1], ["created_at", "2014-10-06 13:02:18.659031"], ["updated_at", "2014-10-06 13:02:18.659031"], ["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.3ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE ((start_delivering_at < '2014-10-06 13:02:18.660083' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:18.660086' OR stop_delivering_at IS NULL)) AND (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)  ORDER BY start_delivering_at ASC
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.664604"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:18.664604"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:18.665977' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:18.665979' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (6.8ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.676970"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:18.676970"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:18.678150' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:18.678152' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.680571"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:18.680571"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:18.681663' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:18.681665' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (10.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.694836"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:18.694836"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:18.696010' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:18.696013' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.698863"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:18.698863"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:18.700437' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:18.700439' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.703835"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:02:18.702953"], ["updated_at", "2014-10-06 13:02:18.703835"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:18.705276' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:18.705278' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:18.710854"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-05 13:02:18.709776"], ["updated_at", "2014-10-06 13:02:18.710854"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:18.713033' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:18.713036' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[36m (0.4ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "Announcement text"], ["created_at", "2014-10-06 13:02:29.566021"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:02:29.566021"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 13:02:29.632536"], ["updated_at", "2014-10-06 13:02:29.632536"], ["user_id", 10]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+  [1m[36mStarburst::AnnouncementView Load (0.1ms)[0m  [1mSELECT  "starburst_announcement_views".* FROM "starburst_announcement_views"   ORDER BY "starburst_announcement_views"."id" DESC LIMIT 1[0m
+  [1m[35mStarburst::AnnouncementView Load (0.1ms)[0m  SELECT "starburst_announcement_views".* FROM "starburst_announcement_views"
+  [1m[36m (1.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)  [["body", "Announcement text"], ["created_at", "2014-10-06 13:02:29.643817"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:02:29.643817"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by Starburst::AnnouncementsController#mark_as_read as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mStarburst::Announcement Load (0.0ms)[0m  SELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE "starburst_announcements"."id" = ? LIMIT 1  [["id", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+  [1m[36mStarburst::AnnouncementView Load (0.1ms)[0m  [1mSELECT "starburst_announcement_views".* FROM "starburst_announcement_views"[0m
+  [1m[35m (5.9ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?, ?)[0m  [["body", "This is an announcement."], ["created_at", "2014-10-06 13:02:29.655416"], ["limit_to_users", nil], ["updated_at", "2014-10-06 13:02:29.655416"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (6.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("body", "created_at", "limit_to_users", "title", "updated_at") VALUES (?, ?, ?, ?, ?)  [["body", "This is an announcement."], ["created_at", "2014-10-06 13:02:29.664315"], ["limit_to_users", nil], ["title", "Test title"], ["updated_at", "2014-10-06 13:02:29.664315"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (6.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.676351"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-05 13:02:29.674532"], ["updated_at", "2014-10-06 13:02:29.676351"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:29.677919' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:29.677921' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (6.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.686733"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:29.686733"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:29.688060' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:29.688062' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (6.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.696479"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:29.696479"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:29.697595' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:29.697597' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (11.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.711563"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["stop_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:29.711563"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:29.713628' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:29.713630' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (6.5ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.723058"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:02:29.721922"], ["updated_at", "2014-10-06 13:02:29.723058"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:29.724323' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:29.724325' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (8.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "stop_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.734632"], ["limit_to_users", nil], ["stop_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:29.734632"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:29.735770' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:29.735772' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (6.9ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.745466"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-07 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:29.745466"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT  "starburst_announcements".* FROM "starburst_announcements"  WHERE ((start_delivering_at < '2014-10-06 13:02:29.746549' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:29.746551' OR stop_delivering_at IS NULL))  ORDER BY start_delivering_at ASC LIMIT 1[0m
+  [1m[35m (6.2ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.755049"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n  :operator: =\n"], ["updated_at", "2014-10-06 13:02:29.755049"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:02:29.758731"], ["limit_to_users", "---\n- :field: subscription\n  :value: ''\n"], ["updated_at", "2014-10-06 13:02:29.758731"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.763803"], ["subscription", ""], ["updated_at", "2014-10-06 13:02:29.763803"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:02:29.766273"], ["subscription", "monthly"], ["updated_at", "2014-10-06 13:02:29.766273"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements"
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35m (9.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.779482"], ["limit_to_users", "---\n- :field: free?\n  :value: true\n"], ["updated_at", "2014-10-06 13:02:29.779482"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-10-06 13:02:29.781704"], ["subscription", ""], ["updated_at", "2014-10-06 13:02:29.781704"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "subscription", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.784255"], ["subscription", "monthly"], ["updated_at", "2014-10-06 13:02:29.784255"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.1ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements"[0m
+  [1m[35mStarburst::Announcement Load (0.1ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements"
+  [1m[36m (0.6ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:29.789827"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:02:29.789131"], ["updated_at", "2014-10-06 13:02:29.789827"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.791374"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:29.791374"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 13:02:29.792888"], ["updated_at", "2014-10-06 13:02:29.792888"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 13:02:29.794330"], ["updated_at", "2014-10-06 13:02:29.794330"], ["user_id", 1]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)[0m
+  [1m[35m (3.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.804306"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:02:29.803423"], ["updated_at", "2014-10-06 13:02:29.804306"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:29.806079"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:29.806079"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 13:02:29.808745"], ["updated_at", "2014-10-06 13:02:29.808745"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2014-10-06 13:02:29.810786"], ["updated_at", "2014-10-06 13:02:29.810786"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["announcement_id", 1], ["created_at", "2014-10-06 13:02:29.812775"], ["updated_at", "2014-10-06 13:02:29.812775"], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mStarburst::Announcement Load (0.2ms)[0m  [1mSELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 2 WHERE (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)[0m
+  [1m[35m (3.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-10-06 13:02:29.821710"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-05 13:02:29.820735"], ["updated_at", "2014-10-06 13:02:29.821710"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "starburst_announcements" ("created_at", "limit_to_users", "start_delivering_at", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", "2014-10-06 13:02:29.823784"], ["limit_to_users", nil], ["start_delivering_at", "2014-10-06 00:00:00.000000"], ["updated_at", "2014-10-06 13:02:29.823784"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2014-10-06 13:02:29.825158"], ["updated_at", "2014-10-06 13:02:29.825158"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "starburst_announcement_views" ("announcement_id", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)  [["announcement_id", 1], ["created_at", "2014-10-06 13:02:29.826486"], ["updated_at", "2014-10-06 13:02:29.826486"], ["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mStarburst::Announcement Load (0.2ms)[0m  SELECT "starburst_announcements".* FROM "starburst_announcements" LEFT JOIN starburst_announcement_views ON 
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+				starburst_announcement_views.user_id = 1 WHERE ((start_delivering_at < '2014-10-06 13:02:29.827610' OR start_delivering_at IS NULL) 
+				AND (stop_delivering_at > '2014-10-06 13:02:29.827612' OR stop_delivering_at IS NULL)) AND (starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL)  ORDER BY start_delivering_at ASC
+  [1m[36m (3.3ms)[0m  [1mrollback transaction[0m
