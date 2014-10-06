@@ -1,10 +1,10 @@
 module Starburst
   module AnnouncementsHelper
   	def current_announcement
-		if defined? current_user
+		if (defined? current_user) && current_user
     		@current_announcement ||= Announcement.current(current_user)
 		else
-			nil
+			false
 		end
   	end
   end
