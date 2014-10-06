@@ -111,6 +111,7 @@ describe Announcement do
     end
 
     it "shows up for the proper user only (method condition)" do
+      Starburst.user_instance_methods = ["free?"]
       limited_announcement = Announcement.create(:limit_to_users => [
         {
           :field => "free?",
