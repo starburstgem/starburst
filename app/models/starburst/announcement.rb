@@ -20,11 +20,6 @@ module Starburst
 
 		scope :in_delivery_order, -> { order("start_delivering_at ASC")}
 
-		def self.user_methods
-		    # TODO: Bring these into gem config
-		    ["free?"]
-		end
-
 		def self.current(current_user = nil)
 			if current_user
 				find_announcement_for_current_user(ready_for_delivery.unread_by(current_user).in_delivery_order, current_user)
@@ -34,7 +29,7 @@ module Starburst
 		end
 
 		def self.find_announcement_for_current_user(announcements, user)
-			user_as_array = user.serializable_hash(methods: self.user_methods)
+			user_as_array = user.serializable_hash(methods: Starburst.user_instance_methods)
 			announcements.each do |announcement|
 				if user_matches_conditions(user_as_array, announcement.limit_to_users)
 					return announcement
