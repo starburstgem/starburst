@@ -23,6 +23,9 @@ module Starburst
 			expect(response.status).to eq 422
 			expect(AnnouncementView.all.length).to eq 0
 		end
+		it "has a helper path for mark as read" do
+			expect(mark_as_read_path(1)).to eq "/starburst/announcements/1/mark_as_read"
+		end
 	end
 
 end

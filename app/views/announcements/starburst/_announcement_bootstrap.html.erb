@@ -1,4 +1,6 @@
-<div class="alert alert-info alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <p><%= current_announcement.body %></p>
-</div>
+<% if current_announcement %>
+	<div class="alert alert-info alert-dismissible" role="alert">
+		<%= button_to '<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>'.html_safe, mark_as_read_path(current_announcement.id), :method => :post, :remote => true, :class => "close", :data => {:dismiss => "alert"} %>
+		<p><%= current_announcement.body %></p>
+	</div>
+<% end %>

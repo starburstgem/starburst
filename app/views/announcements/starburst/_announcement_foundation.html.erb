@@ -1,6 +1,6 @@
 <% if current_announcement %>
 	<div data-alert class="alert-box" id="one-time-announcement">
 	 	<p><%= current_announcement.body %></p>
-	 	<%= link_to "&times;".html_safe, "/announcements/#{current_announcement.id}/mark_as_read", :method => :post, :remote => true, :id => "one-time-announcements-close", :class => "close" %>
+	 	<%= link_to "&times;".html_safe, mark_as_read_path(current_announcement.id), :method => :post, :remote => true, :id => "one-time-announcements-close", :class => "close" %>
 	</div>
 <% end %>
