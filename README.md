@@ -109,9 +109,9 @@ The code below targets the announcement to users with a `subscription` field equ
 		:body => '<a href="/upgrade">Upgrade to platinum</a> and save 10% with coupon code XYZ!'
 	)
 
-### Advanced configuration
+## Advanced configuration
 
-## Current user
+### Current user
 
 Most Rails authentication libraries (like Devise and Clearance) place the current user into the `current_user` method. If your authenticaiton library uses a different method, create an initializer for Starburst at `config/initializers/starburst.rb` and add the text below, replacing `current_user` with the name of the equivalent method in your authentication library.
 
@@ -119,7 +119,7 @@ Most Rails authentication libraries (like Devise and Clearance) place the curren
 		config.current_user_method  = "current_user"
 	end
 
-## Targeting by methods rather than fields
+### Targeting by methods rather than fields
 
 With targeting, you can limit which users will see a particular announcement. Out of the box, Starburst allows you to limit by fields in the database. However, your User model may have methods that don't directly map to database fields.
 
