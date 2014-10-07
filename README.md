@@ -11,7 +11,7 @@ You can target messages to particular groups of users, based on their database a
 
 Starburst remembers _on the server_ who has closed which message. Therefore, a user who closes a message on their desktop won't see it again on their mobile device. Starburst doesn't use cookies, so a user won't see an announcement they've already read if they switch devices or clear their cookies.
 
-<img src="http://aspiringwebdev.com/wp-content/uploads/2014/10/starburst-foundation.png" title="Announcement delivered by Starburst, on an app that uses Zurb Foundation"></img>
+[![Announcement in Zurb Foundation](http://aspiringwebdev.com/wp-content/uploads/2014/10/starburst-foundation.png)](#)
 
 _An announcement delivered by Starburst, on a Rails app using Zurb Foundation_
 
