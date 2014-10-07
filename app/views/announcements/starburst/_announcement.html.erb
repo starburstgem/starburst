@@ -1,0 +1,6 @@
+<% if current_announcement %>
+	<div class="starburst-announcement">
+	 	<p><%= current_announcement.body %></p>
+	 	<%= link_to "Close", starburst.mark_as_read_path(current_announcement.id), :method => :post, :remote => true, :class => "starburst-close" %>
+	</div>
+<% end %>

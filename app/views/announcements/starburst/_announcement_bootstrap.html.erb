@@ -1,12 +1,12 @@
 <% if current_announcement %>
 	<%= form_tag starburst.mark_as_read_path(current_announcement.id), :remote => true do %>
-		<div class="alert alert-info" role="alert">
+		<div class="alert alert-info starburst-alert" role="alert">
 			<button name="commit" type="submit" class="close starburst-close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 			<p><%= current_announcement.body %></p>
 		</div>
 		<script type="text/javascript">
 			$(".starburst-close").on("click", function() {
-				$(this).parent().hide();
+				$(".starburst-alert").hide();
 			});
 		</script>
 	<% end %>
