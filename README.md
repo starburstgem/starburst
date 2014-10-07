@@ -83,8 +83,8 @@ This will present an announcement to every user of the app. Once they dismiss th
 
 Find out more about [scheduling announcements](#scheduling) and [targeting them to specific users](#targeting).
 
-## Scheduling announcements 
 <a name="scheduling"></a>
+## Scheduling announcements 
 
 You can schedule annoucements as follows:
 
@@ -93,8 +93,8 @@ You can schedule annoucements as follows:
 
 	Announcement.create(:start_delivering_at => Date.today, :stop_delivering_at => Date.today + 10.days)
 
-## Targeting announcements
 <a name="targeting"></a>
+## Targeting announcements
 
 You can target announcements to particular users by setting the `limit_to_users` option.
 
