@@ -42,7 +42,7 @@ gem "starburst"
 
 Run the following commands:
 
-```ruby
+```
 rake starburst:install:migrations
 rake db:migrate
 ```
@@ -61,9 +61,10 @@ mount Starburst::Engine => "/starburst"
 
 Add the following line to your application.js file (app/assets/javascripts/application.js):
 
-```ruby
+```
 //= require starburst/starburst
 ```
+
 ## Getting started
 
 ### Add an announcement partial to your app's layout
@@ -107,7 +108,9 @@ You can schedule annoucements as follows:
 
 `stop_delivering_at` - Do not show this announcement to anyone after this date, not even to users who have seen the message before but not acknowledged it.
 
-	Announcement.create(:start_delivering_at => Date.today, :stop_delivering_at => Date.today + 10.days)
+```ruby
+Announcement.create(:start_delivering_at => Date.today, :stop_delivering_at => Date.today + 10.days)
+```
 
 <a name="targeting"></a>
 ## Targeting announcements
@@ -117,11 +120,12 @@ You can target announcements to particular users by setting the `limit_to_users`
 The code below targets the announcement to users with a `subscription` field equal to `gold`.
 
 ```ruby
-Announcement.create(:limit_to_users => [
-	{
-		:field => "subscription",
-		:value => "gold"
-	}
+Announcement.create(:limit_to_users => 
+	[
+		{
+			:field => "subscription",
+			:value => "gold"
+		}
 	],
 	:body => '<a href="/upgrade">Upgrade to platinum</a> and save 10% with coupon code XYZ!'
 )
