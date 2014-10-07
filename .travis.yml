@@ -12,7 +12,6 @@ rvm:
 
 install:
   - "bundle install"
-  - "bundle exec appraisal install"
 
 before_script:
   - "bundle exec rake db:migrate"
