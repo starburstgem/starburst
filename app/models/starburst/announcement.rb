@@ -6,19 +6,19 @@ module Starburst
 			attr_accessible(:title, :body, :start_delivering_at, :stop_delivering_at, :limit_to_users)
 		end
 
-		scope :ready_for_delivery, -> { 
+		scope :ready_for_delivery, lambda { 
 			where("(start_delivering_at < ? OR start_delivering_at IS NULL) 
 				AND (stop_delivering_at > ? OR stop_delivering_at IS NULL)", Time.now, Time.now) 
 		}
 
-		scope :unread_by, -> (current_user) { 
+		scope :unread_by, lambda {|current_user|
 			joins("LEFT JOIN starburst_announcement_views ON 
 				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
 				starburst_announcement_views.user_id = #{Announcement.sanitize(current_user.id)}")
 			.where("starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL")
 		}
 
-		scope :in_delivery_order, -> { order("start_delivering_at ASC")}
+		scope :in_delivery_order, lambda { order("start_delivering_at ASC")}
 
 		def self.current(current_user = nil)
 			if current_user
