@@ -36,20 +36,28 @@ Starburst [works](https://secure.travis-ci.org/csm123/starburst) on Rails 3 and 
 
 Add Starburst to your gemfile:
 
-	gem "starburst"
+```ruby
+gem "starburst"
+```
 
 Run the following commands:
 
-	rake starburst:install:migrations
-	rake db:migrate
+```ruby
+rake starburst:install:migrations
+rake db:migrate
+```
 
 Add the following line to your ApplicationController (app/controllers/starburst/application_controller.rb):
 
-	helper Starburst::AnnouncementsHelper
+```ruby
+helper Starburst::AnnouncementsHelper
+```
 
 Add the following line to your routes file (config/routes.rb):
 
-	mount Starburst::Engine => "/starburst"
+```ruby
+mount Starburst::Engine => "/starburst"
+```
 
 Add the following line to your application.js file (app/assets/javascripts/application.js):
 
@@ -64,19 +72,19 @@ Starburst comes with pre-built announcement boxes for sites using Zurb Foundatio
 
 If you are using Twitter Bootstrap in your app, add the following line to your app layout file, above <%= yield %>:
 
-```ruby
+```erb
 <%= render :partial => "announcements/starburst/announcement_bootstrap" %>
 ```
 
 If you are using Zurb Foundation in your app, add the following line to your app layout file, above <%= yield %>:
 
-```ruby
+```erb
 <%= render :partial => "announcements/starburst/announcement_foundation" %>
 ```
 
 If you are using neither Bootstrap nor Foundation, add the following line. You'll need to define your own styles; you can use  `#starburst-announcement` ID for the box, and the `#starburst-close` for the close button.
 
-```ruby
+```erb
 <%= render :partial => "announcements/starburst/announcement" %>
 ```
 
