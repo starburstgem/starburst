@@ -75,23 +75,27 @@ Add the following line to your application.js file (app/assets/javascripts/appli
 
 Starburst comes with pre-built announcement boxes for sites using Zurb Foundation and Twitter Bootstrap. It also includes an announcement box with no assigned styles.
 
-If you are using Twitter Bootstrap in your app, add the following line to your app layout file, above <%= yield %>:
+Add one of the lines below your application layout view at `app/views/layouts/application.html.erb`, right above `<%= yield =>`. You can place the partials anywhere, of course; this is just the most common location.
+
+#### Twitter Bootstrap
 
 ```erb
 <%= render :partial => "announcements/starburst/announcement_bootstrap" %>
 ```
 
-If you are using Zurb Foundation in your app, add the following line to your app layout file, above <%= yield %>:
+#### Zurb Foundation
 
 ```erb
 <%= render :partial => "announcements/starburst/announcement_foundation" %>
 ```
 
-If you are using neither Bootstrap nor Foundation, add the following line. You'll need to define your own styles; you can use  `#starburst-announcement` ID for the box, and the `#starburst-close` for the close button.
+#### Custom styles
 
 ```erb
 <%= render :partial => "announcements/starburst/announcement" %>
 ```
+
+Set your own styles. Use `#starburst-announcement` ID for the box, and the `#starburst-close` for the close button.
 
 ### Add an announcement
 
