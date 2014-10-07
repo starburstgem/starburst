@@ -7,9 +7,9 @@
 
 Starburst allows you to show messages to logged in users within your Rails app. Once the user closes the message, they won't see it again.
 
-You can target messages to particular groups of users, based on their database attributes or your own methods on the User class. For instance, you might send a message only to users on your premium plan, or only to users who have been with the service for at least a month.
+You can target messages to particular groups of users, based on their database attributes or your own methods on the User class. For instance, you might send a message only to users on your premium plan.
 
-Starburst remembers _on the server_ who has closed which message. Therefore, a user who closes a message on their desktop won't see it again on their mobile device. This is an alternative to storing this information in cookies, which are specific to a device and are impacted by a user's privacy settings.
+Starburst remembers _on the server_ who has closed which message. Therefore, a user who closes a message on their desktop won't see it again on their mobile device. Starburst doesn't use cookies, so a user won't see an announcement they've already read if they switch devices or clear their cookies.
 
 [![Announcement in Zurb Foundation](http://aspiringwebdev.com/wp-content/uploads/2014/10/Screen-Shot-2014-10-07-at-7.20.50-PM.png)](#)
 
@@ -17,20 +17,20 @@ _An announcement delivered by Starburst, on a Rails app using Zurb Foundation_
 
 ## Use cases
 
-You may want to share with your users:
+Use Starburst to share announcements with your users, like:
 
-- A new feature announcement
-- Warning about upcoming downtime
-- A special coupon to upgrade to a premium plan
+- A new feature
+- Upcoming downtime
+- A coupon to upgrade to a premium plan
 
-In any case, users will see the message until they dismiss it, and then it won't appear again.
+Users will see the message until they dismiss it, and then won't see it again.
 
 ## Requirements
 
-### Authentication system like Devise or Clearance
-Starburst needs to know who is currenty logged in. If you are using Devise or Clearance, Starburst will look at the current_user object automatically.
+### Authentication
+Starburst needs to know who is logged in to your app. If you are using Devise, Clearance, or another authentication library that sets a current\_user method, you're all set.
 
-If you are using a different authentication system that does not have a current_user object, see advanced configuration below.
+If you use a different authentication system that does not set a current\_user method, [tell Starburst](#current_user) what method your library uses.
 
 ### Ruby and Rails
 
@@ -139,6 +139,7 @@ Announcement.create(:limit_to_users =>
 
 ## Advanced configuration
 
+<a name="current_user"></a>
 ### Current user
 
 Most Rails authentication libraries (like Devise and Clearance) place the current user into the `current_user` method. If your authenticaiton library uses a different method, create an initializer for Starburst at `config/initializers/starburst.rb` and add the text below, replacing `current_user` with the name of the equivalent method in your authentication library.
