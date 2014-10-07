@@ -1,5 +1,5 @@
 require "starburst/engine"
-require "helpers/configuration"
+require "helpers/starburst/configuration"
 
 module Starburst
 	extend Configuration
