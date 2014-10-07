@@ -5,13 +5,7 @@ require 'appraisal'
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 
-task :default do |t|
-  if ENV['BUNDLE_GEMFILE'] =~ /gemfiles/
-    exec 'rake spec'
-  else
-    Rake::Task['appraise'].execute
-  end
-end
+task :default => ['appraisal:install']
 
 task :appraise => ['appraisal:install'] do |t|
   exec 'rake appraisal'
