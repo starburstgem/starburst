@@ -25,6 +25,8 @@ Use Starburst to share announcements with your users, like:
 
 Users will see the message until they dismiss it, and then won't see it again.
 
+A user will not see the next announcement until they acknowledge the previous one (i.e. users are shown one announcement at a time). Announcements are delivered earliest first. Be sure to [schedule](#scheduling) announcements so they appear only while they're relevant.
+
 ## Requirements
 
 ### Authentication
