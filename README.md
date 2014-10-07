@@ -29,7 +29,7 @@ If you are using a different authentication system that does not have a current_
 
 ### Ruby and Rails
 
-Starburst requires Rails 3.1 or greater.
+Starburst is tested on Rails 3 and 4, and Ruby 1 and 2.
 
 ## Installation
 
@@ -37,20 +37,38 @@ Add Starburst to your gemfile:
 
 	gem "starburst"
 
-Run the following commands:
+Run the following command in your app directory:
 
-	 rake starburst:install:migrations
-	 rake db:migrate
+	rails generate starburst:install
 
-Add the following line to your ApplicationController (app/controllers/starburst/application_controller.rb):
+The generator:
+
+- creates a migration that adds a table for announcements, and another table that notes which users have read which announcements
+- adds the announcements helper to your `ApplicationController`
+- mounts the starburst route used for marking announcements as read in your routes file
+- references Starburst's JavaScript, used to immediately hide an annoucement when the user acknowledges it, to your `application.js` file
+
+Next, run the migration that the generator added:
+
+	rake db:migrate
+
+Proceed to the Getting Started section below.
+
+
+*Run the following commands:
+
+	rake starburst:install:migrations
+	rake db:migrate
+
+*Add the following line to your ApplicationController (app/controllers/starburst/application_controller.rb):
 
 	helper Starburst::AnnouncementsHelper
 
-Add the following line to your routes file (config/routes.rb):
+*Add the following line to your routes file (config/routes.rb):
 
 	mount Starburst::Engine => "/starburst"
 
-Add the following line to your application.js file (app/assets/javascripts/application.js):
+*Add the following line to your application.js file (app/assets/javascripts/application.js):
 
 	//= require starburst/starburst
 
