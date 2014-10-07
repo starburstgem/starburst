@@ -68,9 +68,10 @@ If you are using Zurb Foundation in your app, add the following line to your app
 
 	<%= render :partial => "announcements/starburst/announcement_foundation" %>
 
-If you are using neither Bootstrap nor Foundation, add the following line:
+If you are using neither Bootstrap nor Foundation, add the following line. You'll need to define your own styles; you can use  `#starburst-announcement` ID for the box, and the `#starburst-close` for the close button.
 
 	<%= render :partial => "announcements/starburst/announcement" %>
+
 
 ### Add an announcement
 
@@ -82,22 +83,60 @@ This will present an announcement to every user of the app. Once they dismiss th
 
 Find out more about [scheduling announcements](#scheduling) and [targeting them to specific users](#targeting).
 
-## Scheduling announcements
+## Scheduling announcements 
+<a name="scheduling"></a>
 
 You can schedule annoucements as follows:
 
-start_delivering_on - Do not deliver thsi announcement until this date.
-stop_delivering_on - Do not show this announcement to anyone after this date, not even to users who have seen the message before but not acknowledged it.
+`start_delivering_at` - Do not deliver this announcement until this date.
+`stop_delivering_at` - Do not show this announcement to anyone after this date, not even to users who have seen the message before but not acknowledged it.
+
+	Announcement.create(:start_delivering_at => Date.today, :stop_delivering_at => Date.today + 10.days)
 
 ## Targeting announcements
+<a name="targeting"></a>
 
-You can target annoucnements to particular users by setting the limit_to_users option.
+You can target announcements to particular users by setting the `limit_to_users` option.
 
-MORE ON THE HASH HERE
+The code below targets the announcement to users with a `subscription` field equal to `gold`.
+
+	Announcement.create(:limit_to_users => [
+		{
+			:field => "subscription",
+			:value => "gold"
+		}
+		],
+		:body => '<a href="/upgrade">Upgrade to platinum</a> and save 10% with coupon code XYZ!'
+	)
+
+### Advanced configuration
+
+## Current user
+
+Most Rails authentication libraries (like Devise and Clearance) place the current user into the `current_user` method. If your authenticaiton library uses a different method, create an initializer for Starburst at `config/initializers/starburst.rb` and add the text below, replacing `current_user` with the name of the equivalent method in your authentication library.
+
+	Starburst.configuration do |config|
+		config.current_user_method  = "current_user"
+	end
+
+## Targeting by methods rather than fields
+
+With targeting, you can limit which users will see a particular announcement. Out of the box, Starburst allows you to limit by fields in the database. However, your User model may have methods that don't directly map to database fields.
+
+For instance, your User model might have an instance method `free?` that returns `true` if the user is on a free plan and `false` if they are on a paid plan. The actual field in the database may be called something different.
+
+You can target based on methods that are not in the database, but you must specify those methods in a Starburst initializer. Create an initializer for Starburst at `config/initializers/starburst.rb` and add the text below:
+
+	Starburst.configuration do |config|
+		config.user_instance_methods  = ["free?"]
+	end
+
+`user_instance_methods` is an array, so you can specify more than one method. All of the methods will be available for [targeting](#targeting), as if they were fields.
 
 ## Roadmap
 
 * Administrative interface for adding and editing announcements
+* Target annoucements with operators other than `=` (ex. users created after a certain date)
 * Easy way to get an archive of messages for a particular user
 * Convenience methods to see which messages a particular user has and hasn't read
 * Stats on how many messages are unread, read, and dismissed
