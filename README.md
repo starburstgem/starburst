@@ -92,8 +92,10 @@ If you are using neither Bootstrap nor Foundation, add the following line. You'l
 ### Add an announcement
 
 Starburst doesn't have an admin interface yet, but you can add announcements through your own code.
-	
-	Announcement.create(:title => "Introducing balloons", :body => "Our app now features lots of balloons! Enjoy!")
+
+```ruby
+Announcement.create(:title => "Introducing balloons", :body => "Our app now features lots of balloons! Enjoy!")
+```
 
 This will present an announcement to every user of the app. Once they dismiss the announcement, they won't see it again.
 
