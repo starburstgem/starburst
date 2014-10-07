@@ -28,7 +28,7 @@ feature 'Announcements' do
 		announcement = FactoryGirl.create(:announcement, :body => "My announcement")
 		visit root_path
 		page.should have_content "My announcement"
-		click_link "×"
+		click_link "starburst-close"
 		wait_for_ajax
 		visit root_path
 		page.should_not have_content "My announcement"

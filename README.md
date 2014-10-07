@@ -1,6 +1,7 @@
 # Starburst
 
 [![Build Status](https://secure.travis-ci.org/csm123/starburst.svg?branch=master)](http://travis-ci.org/csm123/starburst)
+[![Code Climate](https://codeclimate.com/github/csm123/starburst/badges/gpa.svg)](https://codeclimate.com/github/csm123/starburst)
 
 **STARBURST IS STILL IN DEVELOPMENT as of October 6, 2014. It will be released by mid-October.**
 
