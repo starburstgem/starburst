@@ -53,8 +53,9 @@ Add the following line to your routes file (config/routes.rb):
 
 Add the following line to your application.js file (app/assets/javascripts/application.js):
 
-	//= require starburst/starburst
-
+```ruby
+//= require starburst/starburst
+```
 ## Getting started
 
 ### Add an announcement partial to your app's layout
@@ -63,16 +64,21 @@ Starburst comes with pre-built announcement boxes for sites using Zurb Foundatio
 
 If you are using Twitter Bootstrap in your app, add the following line to your app layout file, above <%= yield %>:
 
-	<%= render :partial => "announcements/starburst/announcement_bootstrap" %>
+```ruby
+<%= render :partial => "announcements/starburst/announcement_bootstrap" %>
+```
 
 If you are using Zurb Foundation in your app, add the following line to your app layout file, above <%= yield %>:
 
-	<%= render :partial => "announcements/starburst/announcement_foundation" %>
+```ruby
+<%= render :partial => "announcements/starburst/announcement_foundation" %>
+```
 
 If you are using neither Bootstrap nor Foundation, add the following line. You'll need to define your own styles; you can use  `#starburst-announcement` ID for the box, and the `#starburst-close` for the close button.
 
-	<%= render :partial => "announcements/starburst/announcement" %>
-
+```ruby
+<%= render :partial => "announcements/starburst/announcement" %>
+```
 
 ### Add an announcement
 
@@ -102,14 +108,16 @@ You can target announcements to particular users by setting the `limit_to_users`
 
 The code below targets the announcement to users with a `subscription` field equal to `gold`.
 
-	Announcement.create(:limit_to_users => [
-		{
-			:field => "subscription",
-			:value => "gold"
-		}
-		],
-		:body => '<a href="/upgrade">Upgrade to platinum</a> and save 10% with coupon code XYZ!'
-	)
+```ruby
+Announcement.create(:limit_to_users => [
+	{
+		:field => "subscription",
+		:value => "gold"
+	}
+	],
+	:body => '<a href="/upgrade">Upgrade to platinum</a> and save 10% with coupon code XYZ!'
+)
+```
 
 ## Advanced configuration
 
@@ -117,9 +125,11 @@ The code below targets the announcement to users with a `subscription` field equ
 
 Most Rails authentication libraries (like Devise and Clearance) place the current user into the `current_user` method. If your authenticaiton library uses a different method, create an initializer for Starburst at `config/initializers/starburst.rb` and add the text below, replacing `current_user` with the name of the equivalent method in your authentication library.
 
-	Starburst.configuration do |config|
-		config.current_user_method = "current_user"
-	end
+```ruby
+Starburst.configuration do |config|
+	config.current_user_method = "current_user"
+end
+```
 
 ### Targeting by methods rather than fields
 
@@ -129,21 +139,23 @@ For instance, your User model might have an instance method `free?` that returns
 
 You can target based on methods that are not in the database, but you must specify those methods in a Starburst initializer. Create an initializer for Starburst at `config/initializers/starburst.rb` and add the text below:
 
-	Starburst.configuration do |config|
-		config.user_instance_methods  = ["free?"]
-	end
+```ruby
+Starburst.configuration do |config|
+	config.user_instance_methods  = ["free?"]
+end
+```
 
 `user_instance_methods` is an array, so you can specify more than one method. All of the methods will be available for [targeting](#targeting), as if they were fields.
 
 ## Roadmap
 
 * Installation
-** Installation script to reduce steps
+  * Installation script to reduce steps
 * Admin
-** Administrative interface for adding and editing announcements
-** Target annoucements with operators other than `=` (ex. users created after a certain date)
-** Stats on how many messages are unread, read, and dismissed
+  * Administrative interface for adding and editing announcements
+  * Target annoucements with operators other than `=` (ex. users created after a certain date)
+  * Stats on how many messages are unread, read, and dismissed
 * User
-** Archive of messages delivered to a particular user
+  * Archive of messages delivered to a particular user
 
 Please add suggestions to the Issues tab in GitHub.
