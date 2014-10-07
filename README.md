@@ -30,7 +30,7 @@ If you are using a different authentication system that does not have a current_
 
 ### Ruby and Rails
 
-Starburst [works](https://secure.travis-ci.org/csm123/starburst.svg?branch=master)] on Rails 3 and 4, and Ruby 1 and 2.
+Starburst [works](https://secure.travis-ci.org/csm123/starburst.svg?branch=master) on Rails 3 and 4, and Ruby 1 and 2.
 
 ## Installation
 
