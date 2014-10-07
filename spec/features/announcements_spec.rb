@@ -19,7 +19,7 @@ feature 'Announcements' do
 		page.should_not have_content "My announcement"
 		page.should have_content "Sample homepage"
 	end
-	scenario 'mark announcement as read then hide it from now on', :js => true do
+	scenario 'mark announcement as read then hide it from now on' do
 		pending
 		@user = FactoryGirl.create(:user)
 		login_as(@user, :scope => :user, :run_callbacks => false)

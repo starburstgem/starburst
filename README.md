@@ -135,8 +135,11 @@ You can target based on methods that are not in the database, but you must speci
 
 ## Roadmap
 
+* Installation script to reduce steps
 * Administrative interface for adding and editing announcements
 * Target annoucements with operators other than `=` (ex. users created after a certain date)
 * Easy way to get an archive of messages for a particular user
 * Convenience methods to see which messages a particular user has and hasn't read
 * Stats on how many messages are unread, read, and dismissed
+
+Please add suggestions to the Issues tab in GitHub.

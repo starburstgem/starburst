@@ -6,10 +6,6 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'factory_girl_rails'
 require 'capybara'
-require 'selenium-webdriver'
-
-
-
 
 Rails.backtrace_cleaner.remove_silencers!
 
