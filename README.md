@@ -12,7 +12,8 @@ You can target messages to particular groups of users, based on their database a
 Starburst remembers _on the server_ who has closed which message. Therefore, a user who closes a message on their desktop won't see it again on their mobile device. This is an alternative to storing this information in cookies, which are specific to a device and are impacted by a user's privacy settings.
 
 [![Announcement in Zurb Foundation](http://aspiringwebdev.com/wp-content/uploads/2014/10/Screen-Shot-2014-10-07-at-7.20.50-PM.png)](#)
-__An announcement delivered by Starburst, on a Rails app using Zurb Foundation__
+
+_An announcement delivered by Starburst, on a Rails app using Zurb Foundation_
 
 ## Use cases
 
