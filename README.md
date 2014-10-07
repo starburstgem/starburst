@@ -50,6 +50,10 @@ Add the following line to your routes file (config/routes.rb):
 
 	mount Starburst::Engine => "/starburst"
 
+Add the following line to your application.js file (app/assets/javascripts/application.js):
+
+	//= require starburst/starburst
+
 ## Getting started
 
 ### Add an announcement partial to your app's layout
