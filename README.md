@@ -40,8 +40,8 @@ Add Starburst to your gemfile:
 
 Run the following commands:
 
-	 rake starburst:install:migrations
-	 rake db:migrate
+	rake starburst:install:migrations
+	rake db:migrate
 
 Add the following line to your ApplicationController (app/controllers/starburst/application_controller.rb):
 
