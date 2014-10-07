@@ -19,3 +19,4 @@ spec/dummy/log/development.log
 spec/dummy/log/test.log
 
 *.gem
+gemfiles/*.lock
