@@ -30,7 +30,7 @@ If you are using a different authentication system that does not have a current_
 
 ### Ruby and Rails
 
-Starburst requires Rails 3.1 or greater.
+Starburst [works](https://secure.travis-ci.org/csm123/starburst.svg?branch=master)] on Rails 3 and 4, and Ruby 1 and 2.
 
 ## Installation
 
@@ -90,6 +90,7 @@ Find out more about [scheduling announcements](#scheduling) and [targeting them 
 You can schedule annoucements as follows:
 
 `start_delivering_at` - Do not deliver this announcement until this date.
+
 `stop_delivering_at` - Do not show this announcement to anyone after this date, not even to users who have seen the message before but not acknowledged it.
 
 	Announcement.create(:start_delivering_at => Date.today, :stop_delivering_at => Date.today + 10.days)
@@ -117,7 +118,7 @@ The code below targets the announcement to users with a `subscription` field equ
 Most Rails authentication libraries (like Devise and Clearance) place the current user into the `current_user` method. If your authenticaiton library uses a different method, create an initializer for Starburst at `config/initializers/starburst.rb` and add the text below, replacing `current_user` with the name of the equivalent method in your authentication library.
 
 	Starburst.configuration do |config|
-		config.current_user_method  = "current_user"
+		config.current_user_method = "current_user"
 	end
 
 ### Targeting by methods rather than fields
@@ -136,11 +137,13 @@ You can target based on methods that are not in the database, but you must speci
 
 ## Roadmap
 
-* Installation script to reduce steps
-* Administrative interface for adding and editing announcements
-* Target annoucements with operators other than `=` (ex. users created after a certain date)
-* Easy way to get an archive of messages for a particular user
-* Convenience methods to see which messages a particular user has and hasn't read
-* Stats on how many messages are unread, read, and dismissed
+* Installation
+** Installation script to reduce steps
+* Admin
+** Administrative interface for adding and editing announcements
+** Target annoucements with operators other than `=` (ex. users created after a certain date)
+** Stats on how many messages are unread, read, and dismissed
+* User
+** Archive of messages delivered to a particular user
 
 Please add suggestions to the Issues tab in GitHub.
