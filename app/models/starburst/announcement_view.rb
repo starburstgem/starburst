@@ -1,6 +1,8 @@
 module Starburst
 	class AnnouncementView < ActiveRecord::Base
-		#attr_accessible :announcement, :user
+		if Rails::VERSION::MAJOR < 4
+			attr_accessible :announcement, :user
+		end
 		belongs_to :announcement
 		belongs_to :user
 	end

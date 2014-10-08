@@ -3,7 +3,7 @@ module Starburst
 		serialize :limit_to_users
 
 		if Rails::VERSION::MAJOR < 4
-			attr_accessible(:title, :body, :start_delivering_at, :stop_delivering_at, :limit_to_users)
+			attr_accessible :title, :body, :start_delivering_at, :stop_delivering_at, :limit_to_users
 		end
 
 		scope :ready_for_delivery, lambda { 
