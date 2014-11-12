@@ -8,6 +8,8 @@ test/dummy/tmp/
 test/dummy/.sass-cache
 spec/dummy/tmp/*
 
+*.sqlite3
+
 spec/dummy/log/test.log
 
 *.log

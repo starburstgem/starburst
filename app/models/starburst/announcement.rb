@@ -18,6 +18,10 @@ module Starburst
 			.where("starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL")
 		}
 
+		scope :in_category, lambda{ |category|
+			where("category = ?", category)
+		}
+
 		scope :in_delivery_order, lambda { order("start_delivering_at ASC")}
 
 		def self.current(current_user = nil)
@@ -25,6 +29,14 @@ module Starburst
 				find_announcement_for_current_user(ready_for_delivery.unread_by(current_user).in_delivery_order, current_user)
 			else
 				ready_for_delivery.in_delivery_order.first
+			end
+		end
+
+		def self.current_for_category(current_user = nil, category)
+			if current_user
+				find_announcement_for_current_user(ready_for_delivery.unread_by(current_user).in_category(category).in_delivery_order, current_user)
+			else
+				ready_for_delivery.in_category(category).in_delivery_order.first
 			end
 		end
 
