@@ -24,3 +24,5 @@ spec/dummy/log/test.log
 
 *.gem
 gemfiles/*.lock
+
+*.sqlite3
