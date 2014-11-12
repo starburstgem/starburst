@@ -8,7 +8,9 @@ test/dummy/tmp/
 test/dummy/.sass-cache
 spec/dummy/tmp/*
 
-*.sqlite3
+
+spec/dummy/db/*.sqlite3
+spec/dummy/db/*.sqlite3-journal
 
 spec/dummy/log/test.log
 
