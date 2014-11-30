@@ -1,5 +1,8 @@
 module Starburst
 	class Announcement < ActiveRecord::Base
+
+		validates :body, presence: true
+
 		serialize :limit_to_users
 
 		if Rails::VERSION::MAJOR < 4
