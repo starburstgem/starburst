@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    starburst (0.9.2)
+    starburst (0.9.3)
       rails (>= 3.0)
 
 GEM
