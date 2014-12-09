@@ -172,6 +172,18 @@ end
 
 `user_instance_methods` is an array, so you can specify more than one method. All of the methods will be available for [targeting](#targeting), as if they were fields.
 
+## Upgrading
+
+### From 0.9.3 to 1.0
+
+This guidance applies only to users of Starburst who are upgrading from 0.9.3 to 1.0.
+
+**IMPORTANT**: This version introduces a uniqueness constraint on the AnnouncementView table. Before installing, you must find and clear out duplicate announcement views in the table:
+
+1. In console on both the development and production environments, run `Starburst::AnnouncementView.select([:announcement_id,:user_id]).group(:announcement_id,:user_id).having("count(*) > 1").count` to find duplicate announcement views
+2. Delete duplicate announcement views as necessary so you have only one of each. Use the `destroy` method on each individual view
+3. Run `rake starburst:install:migrations` and then `rake db:migrate` on your development environment, then push to production
+
 ## Roadmap
 
 * Installation
