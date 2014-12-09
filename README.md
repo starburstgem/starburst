@@ -3,8 +3,6 @@
 [![Build Status](https://secure.travis-ci.org/csm123/starburst.svg?branch=master)](http://travis-ci.org/csm123/starburst)
 [![Code Climate](https://codeclimate.com/github/csm123/starburst/badges/gpa.svg)](https://codeclimate.com/github/csm123/starburst)
 
-**Starburst is in pre-release at version 0.9, though tests are passing. Please test this in your apps and report any issues to the Issues tab.**
-
 Starburst allows you to show messages to logged in users within your Rails app. Once the user closes the message, they won't see it again.
 
 You can target messages to particular groups of users, based on their database attributes or your own methods on the User class. For instance, you might send a message only to users on your premium plan.
