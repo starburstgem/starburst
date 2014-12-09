@@ -174,9 +174,9 @@ end
 
 ## Upgrading
 
-### From 0.9.3 to 1.0
+### From 0.9.x to 1.0
 
-This guidance applies only to users of Starburst who are upgrading from 0.9.3 to 1.0.
+This guidance applies only to users of Starburst who are upgrading from 0.9.x to 1.0.
 
 **IMPORTANT**: This version introduces a uniqueness constraint on the AnnouncementView table. Before installing, you must find and clear out duplicate announcement views in the table:
 
