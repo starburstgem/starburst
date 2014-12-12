@@ -102,7 +102,7 @@ Set your own styles. Use `#starburst-announcement` ID for the box, and the `#sta
 Starburst doesn't have an admin interface yet, but you can add announcements through your own code.
 
 ```ruby
-Starburst::Announcement.create(:title => "Introducing balloons", :body => "Our app now features lots of balloons! Enjoy!")
+Starburst::Announcement.create(:body => "Our app now features lots of balloons! Enjoy!")
 ```
 
 This will present an announcement to every user of the app. Once they dismiss the announcement, they won't see it again.
@@ -119,7 +119,7 @@ You can schedule annoucements as follows:
 `stop_delivering_at` - Do not show this announcement to anyone after this date, not even to users who have seen the message before but not acknowledged it.
 
 ```ruby
-Starburst::Announcement.create(:start_delivering_at => Date.today, :stop_delivering_at => Date.today + 10.days)
+Starburst::Announcement.create(:body => "Our app now features lots of balloons! Enjoy!", :start_delivering_at => Date.today, :stop_delivering_at => Date.today + 10.days)
 ```
 
 <a name="targeting"></a>
@@ -130,14 +130,15 @@ You can target announcements to particular users by setting the `limit_to_users`
 The code below targets the announcement to users with a `subscription` field equal to `gold`.
 
 ```ruby
-Starburst::Announcement.create(:limit_to_users => 
+Starburst::Announcement.create(
+	:body => '<a href="/upgrade">Upgrade to platinum</a> and save 10% with coupon code XYZ!',
+	:limit_to_users => 
 	[
 		{
 			:field => "subscription",
 			:value => "gold"
 		}
-	],
-	:body => '<a href="/upgrade">Upgrade to platinum</a> and save 10% with coupon code XYZ!'
+	]
 )
 ```
 
@@ -146,7 +147,7 @@ Starburst::Announcement.create(:limit_to_users =>
 <a name="current_user"></a>
 ### Current user
 
-Most Rails authentication libraries (like Devise and Clearance) place the current user into the `current_user` method. If your authenticaiton library uses a different method, create an initializer for Starburst at `config/initializers/starburst.rb` and add the text below, replacing `current_user` with the name of the equivalent method in your authentication library.
+Most Rails authentication libraries (like Devise and Clearance) place the current user into the `current_user` method. If your authentication library uses a different method, create an initializer for Starburst at `config/initializers/starburst.rb` and add the text below, replacing `current_user` with the name of the equivalent method in your authentication library.
 
 ```ruby
 Starburst.configuration do |config|
@@ -184,13 +185,20 @@ This guidance applies only to users of Starburst who are upgrading from 0.9.x to
 
 ## Roadmap
 
+* Targeting
+  * Announcements for non-logged-in users
+  * Announcement categories / locations
 * Installation
   * Installation script to reduce steps
 * Admin
   * Administrative interface for adding and editing announcements
-  * Target annoucements with operators other than `=` (ex. users created after a certain date)
+  * Target announcements with operators other than `=` (ex. users created after a certain date)
   * Stats on how many messages are unread, read, and dismissed
 * User
   * Archive of messages delivered to a particular user
 
-Please add suggestions to the Issues tab in GitHub.
+Please add suggestions to the Issues tab in GitHub. Feel free to tweet the author at <a href="http://twitter.com/coreyitguy/">coreyITguy</a>.
+
+## Contributors
+
+Thanks to <a href="https://github.com/jhenkens/">jhenkens</a> for fixes, performance improvements, and ideas for showing announcements to non-logged-in users.
