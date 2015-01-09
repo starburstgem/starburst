@@ -1,11 +1,13 @@
 module Starburst
   module AnnouncementsHelper
-  	def current_announcement
-		if (defined? current_user) && current_user
-    		@current_announcement ||= Announcement.current(current_user)
-		else
-			false
-		end
-  	end
+
+    def current_announcement
+      if (defined? Starburst.current_user_method) && send(Starburst.current_user_method)
+        @current_announcement ||= Announcement.current(send(Starburst.current_user_method))
+      else
+        false
+      end
+    end
+
   end
 end
