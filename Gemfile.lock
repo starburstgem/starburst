@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    starburst (1.0.2)
+    starburst (1.0.3)
       rails (>= 3.0)
 
 GEM
@@ -60,7 +60,7 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.0)
     minitest (5.4.3)
-    multi_json (1.10.1)
+    multi_json (1.11.0)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     rack (1.5.2)
