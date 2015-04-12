@@ -1,3 +1,5 @@
+require_dependency 'starburst/application_controller'
+
 module Starburst
 	class AnnouncementsController < ApplicationController
 		def mark_as_read
