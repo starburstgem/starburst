@@ -9,14 +9,14 @@ module Starburst
 			attr_accessible :title, :body, :start_delivering_at, :stop_delivering_at, :limit_to_users
 		end
 
-		scope :ready_for_delivery, lambda { 
-			where("(start_delivering_at < ? OR start_delivering_at IS NULL) 
-				AND (stop_delivering_at > ? OR stop_delivering_at IS NULL)", Time.now, Time.now) 
+		scope :ready_for_delivery, lambda {
+			where("(start_delivering_at < ? OR start_delivering_at IS NULL)
+				AND (stop_delivering_at > ? OR stop_delivering_at IS NULL)", Time.current, Time.current)
 		}
 
 		scope :unread_by, lambda {|current_user|
-			joins("LEFT JOIN starburst_announcement_views ON 
-				starburst_announcement_views.announcement_id = starburst_announcements.id AND 
+			joins("LEFT JOIN starburst_announcement_views ON
+				starburst_announcement_views.announcement_id = starburst_announcements.id AND
 				starburst_announcement_views.user_id = #{Announcement.sanitize(current_user.id)}")
 			.where("starburst_announcement_views.announcement_id IS NULL AND starburst_announcement_views.user_id IS NULL")
 		}
