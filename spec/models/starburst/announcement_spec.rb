@@ -28,12 +28,12 @@ describe Announcement do
     end
 
     it "shows before its end date" do
-      Announcement.create(:body => "test", :stop_delivering_at => Time.now + 1.day)
+      Announcement.create(:body => "test", :stop_delivering_at => Time.current + 1.day)
       expect(Announcement.current.present?).to eq true
     end
 
     it "does not show up before its start date" do
-      Announcement.create(:body => "test", :start_delivering_at => Time.now + 1.day)
+      Announcement.create(:body => "test", :start_delivering_at => Time.current + 1.day)
       expect(Announcement.current.blank?).to eq true
     end
 
@@ -43,12 +43,12 @@ describe Announcement do
     end
 
     it "shows up between its start and end dates" do
-      Announcement.create(:body => "test", :start_delivering_at => Time.now, :stop_delivering_at => Time.now + 1.day)
+      Announcement.create(:body => "test", :start_delivering_at => Time.current, :stop_delivering_at => Time.current + 1.day)
       expect(Announcement.current.present?).to eq true
     end
 
     it "does not show when its start and end dates are the same" do
-      Announcement.create(:body => "test", :start_delivering_at => Time.now, :stop_delivering_at => Time.now)
+      Announcement.create(:body => "test", :start_delivering_at => Time.current, :stop_delivering_at => Time.current)
       expect(Announcement.current.blank?).to eq true
     end
 
@@ -58,7 +58,7 @@ describe Announcement do
 
     it "shows up" do
       read_announcement = Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.now)
+      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.current)
       user_who_read_announcement = FactoryGirl.create(:user)
       AnnouncementView.create(:announcement => read_announcement, :user => user_who_read_announcement)
       expect(Announcement.unread_by(user_who_read_announcement)).to eq [unread_announcement]
@@ -66,7 +66,7 @@ describe Announcement do
 
     it "shows up for the current user even when others have read it" do
       read_announcement = Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.now)
+      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.current)
       user_who_read_announcement = FactoryGirl.create(:user)
       user_who_read_no_announcements = FactoryGirl.create(:user)
       AnnouncementView.create(:announcement => read_announcement, :user => user_who_read_announcement)
@@ -75,7 +75,7 @@ describe Announcement do
 
   it "shows up for the current user even when they have read other announcements" do
       read_announcement = Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.now)
+      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.current)
       user_who_read_announcement = FactoryGirl.create(:user)
       AnnouncementView.create(:announcement => read_announcement, :user => user_who_read_announcement)
       expect(Starburst::Announcement.current(user_who_read_announcement)).to eq unread_announcement
@@ -126,7 +126,7 @@ describe Announcement do
     # it "performs" do
     #   pending
     #   require 'benchmark'
-      
+
     #   (1 .. 500).each do
     #     Announcement.create(:limit_to_users => [
     #       {
