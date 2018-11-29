@@ -7,7 +7,7 @@ describe Announcement do
   context "a basic announcement" do
 
     it "can't be created without a body" do
-      expect(Announcement.create(:body => nil)).to have(1).error_on(:body)
+      expect(Announcement.create(:body => nil).tap(&:valid?).errors[:body]).not_to be_empty
     end
 
     it "can be created with just a body" do
