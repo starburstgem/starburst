@@ -36,7 +36,7 @@ If you use a different authentication system that does not set a current\_user m
 
 ### Ruby and Rails
 
-Starburst [works](https://secure.travis-ci.org/csm123/starburst) on Rails 3 and 4, and Ruby 1 and 2.
+Starburst [works](https://secure.travis-ci.org/csm123/starburst) on Rails 4.2, 5.0, 5.1, and 5.2. It should work with the same Ruby versions supported by each framework version.
 
 ## Installation
 
@@ -112,7 +112,7 @@ This will present an announcement to every user of the app. Once they dismiss th
 Find out more about [scheduling announcements](#scheduling) and [targeting them to specific users](#targeting).
 
 <a name="scheduling"></a>
-## Scheduling announcements 
+## Scheduling announcements
 
 You can schedule annoucements as follows:
 
@@ -134,7 +134,7 @@ The code below targets the announcement to users with a `subscription` field equ
 ```ruby
 Starburst::Announcement.create(
 	:body => '<a href="/upgrade">Upgrade to platinum</a> and save 10% with coupon code XYZ!',
-	:limit_to_users => 
+	:limit_to_users =>
 	[
 		{
 			:field => "subscription",

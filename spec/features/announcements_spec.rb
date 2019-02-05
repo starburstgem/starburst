@@ -29,6 +29,6 @@ feature 'Announcements' do
 		page.should_not have_content "My announcement"
 	end
 	scenario 'allow the user to click to hide the announcement' do
-		pending "Figure out how to best stub the current_user method for a JavaScript-enabled test"
+		skip "Figure out how to best stub the current_user method for a JavaScript-enabled test"
 	end
 end

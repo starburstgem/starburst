@@ -10,7 +10,7 @@ describe AnnouncementView do
   	view1 = FactoryGirl.create(:announcement_view, :user => user, :announcement => announcement)
   	view2 = FactoryGirl.build(:announcement_view, :user => user, :announcement => announcement)
   	expect(view1).to be_valid
-  	expect(view2).to have(1).error_on(:user_id)
+  	expect(view2.tap(&:valid?).errors[:user_id]).not_to be_empty
   end
 
   it "allows a user to log views of different announcements" do
