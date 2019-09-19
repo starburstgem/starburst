@@ -25,6 +25,8 @@ spec/dummy/log/test.log
 *.gem
 gemfiles/*.lock
 Gemfile.lock
+.ruby-gemset
+.ruby-version
 
 *.sqlite3
 
