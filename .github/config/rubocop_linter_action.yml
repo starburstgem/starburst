@@ -1,0 +1,24 @@
+check_name: RuboCop
+
+# Description: Versions required to run your RuboCop checks.
+# Valid options: RuboCop and any RuboCop extension, by default the latest gem version will be used. You can explicitly state that
+# (not required) or use a version number, like '1.5.1'.
+# Default:
+#   versions:
+#     - rubocop: 'latest'
+versions:
+  - rubocop: 0.82.0
+  - rubocop-rails: 2.5.2
+  - rubocop-rspec: 1.39.0
+
+# Minimum severity for exit with error code
+# Valid options: 'refactor', 'convention', 'warning', 'error', or 'fatal'.
+# Default: 'warning'
+# Resource: https://rubocop.readthedocs.io/en/stable/configuration/#severity
+rubocop_fail_level: error
+
+# The scope of code that Rubocop should lint. Use this if you only want to lint changed files. If this is not set
+# or not equal to 'modified', Rubocop is run against the entire codebase.
+# Valid options: 'modified'
+# Default: nil
+check_scope: modified
