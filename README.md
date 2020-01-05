@@ -1,7 +1,7 @@
 # Starburst
 
 [![Build Status](https://secure.travis-ci.org/csm123/starburst.svg?branch=master)](http://travis-ci.org/csm123/starburst)
-[![Code Climate](https://codeclimate.com/github/csm123/starburst/badges/gpa.svg)](https://codeclimate.com/github/csm123/starburst)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7f5df24aaefecbd270b4/maintainability)](https://codeclimate.com/github/starburstgem/starburst/maintainability)
 
 Starburst allows you to show messages to logged in users within your Rails app. Once the user closes the message, they won't see it again.
 
