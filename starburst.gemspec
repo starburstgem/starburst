@@ -27,4 +27,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "factory_girl_rails", "~> 4.4.1"
   s.add_development_dependency "appraisal", "1.0.2"
   s.add_development_dependency "byebug"
+  s.add_development_dependency 'simplecov'
 end
