@@ -1,0 +1,7 @@
+AllCops:
+  Exclude:
+    - 'gemfiles/*.gemfile'
+    - 'spec/dummy/db/schema.rb'
+
+Metrics/LineLength:
+  Max: 120

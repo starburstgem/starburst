@@ -7,6 +7,7 @@ gemfile:
   - gemfiles/rails_6.0.0.gemfile
 
 language: ruby
+bundler_args: --with development
 rvm:
   - 2.2
   - 2.3
