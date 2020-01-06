@@ -1,4 +1,7 @@
 # In .travis.yml
+env:
+  global:
+    - CC_TEST_REPORTER_ID=73e44c1f430ccd919b2549ec5e318608be412742ba67f260d1f815702a7f89b0
 gemfile:
   - gemfiles/rails_4.2.0.gemfile
   - gemfiles/rails_5.0.0.gemfile
@@ -30,6 +33,11 @@ jobs:
 before_install:
   - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
   - gem install bundler -v '< 2'
-
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
