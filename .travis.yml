@@ -1,4 +1,3 @@
-# In .travis.yml
 os: linux
 env:
   global:
