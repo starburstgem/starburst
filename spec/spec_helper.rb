@@ -1,6 +1,9 @@
 # http://viget.com/extend/rails-engine-testing-with-rspec-capybara-and-factorygirl
 ENV['RAILS_ENV'] ||= 'test'
 
+require 'simplecov'
+SimpleCov.start 'rails'
+
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'

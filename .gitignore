@@ -1,4 +1,5 @@
 .bundle/
+coverage/
 log/*.log
 pkg/
 test/dummy/db/*.sqlite3
