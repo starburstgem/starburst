@@ -25,6 +25,7 @@ spec/dummy/log/test.log
 *.gem
 gemfiles/*.lock
 Gemfile.lock
+.byebug_history
 .ruby-gemset
 .ruby-version
 
