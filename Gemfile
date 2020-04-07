@@ -15,6 +15,6 @@ gemspec
 
 group :linters do
   gem "rubocop", "0.76.0"
-  gem "rubocop-rails", "2.4.1"
+  gem "rubocop-rails", "2.5.1"
   gem "rubocop-rspec", "1.37.1"
 end
