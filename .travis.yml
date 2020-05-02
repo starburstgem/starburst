@@ -1,6 +1,7 @@
 ---
 arch: amd64
 os: linux
+dist: bionic
 env:
   global:
     - CC_TEST_REPORTER_ID=73e44c1f430ccd919b2549ec5e318608be412742ba67f260d1f815702a7f89b0
