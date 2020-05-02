@@ -1,3 +1,5 @@
+---
+arch: amd64
 os: linux
 env:
   global:
