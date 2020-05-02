@@ -1,31 +1,34 @@
-$:.push File.expand_path("../lib", __FILE__)
+# frozen_string_literal: true
 
-# Maintain your gem's version:
-require "starburst/version"
+lib = File.expand_path('lib', __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'starburst/version'
 
-# Describe your gem and declare its dependencies:
-Gem::Specification.new do |s|
-  s.name        = "starburst"
-  s.version     = Starburst::VERSION
-  s.authors     = ["Corey Martin"]
-  s.email       = ["coreym@gmail.com"]
-  s.homepage    = "http://github.com/csm123/starburst"
-  s.summary     = "One-time messages to users in your app"
-  s.description = "Show one-time messages to users in your Rails app"
-  s.license     = "MIT"
+Gem::Specification.new do |spec|
+  spec.name        = 'starburst'
+  spec.version     = Starburst::VERSION
+  spec.authors     = ['Corey Martin']
+  spec.email       = ['coreym@gmail.com']
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  spec.summary     = 'One-time messages to users in your app'
+  spec.description = 'Show one-time messages to users in your Rails app'
+  spec.homepage    = 'https://github.com/starburstgem/starburst'
+  spec.license     = 'MIT'
 
-  s.add_dependency "rails", ">= 4.2.0", "< 6.1"
+  spec.metadata['homepage_uri'] = spec.homepage
+  spec.metadata['source_code_uri'] = spec.homepage
+  spec.metadata['changelog_uri'] = 'https://github.com/starburstgem/starburst/blob/master/CHANGELOG.md'
 
-  s.add_development_dependency "sqlite3", "~> 1.4.1"
+  spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
+  spec.require_paths = ['lib']
 
-  #RSpec
-  s.test_files = Dir["spec/**/*"]
-  s.add_development_dependency "rspec-rails", "~> 3.8.0"
-  s.add_development_dependency "capybara", "~> 2.4.1"
-  s.add_development_dependency "factory_girl_rails", "~> 4.4.1"
-  s.add_development_dependency "appraisal", "1.0.2"
-  s.add_development_dependency "byebug"
-  s.add_development_dependency 'simplecov'
+  spec.add_runtime_dependency 'rails', '>= 4.2.0', '< 6.1'
+
+  spec.add_development_dependency 'appraisal', '1.0.2'
+  spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'capybara', '~> 2.4.1'
+  spec.add_development_dependency 'factory_girl_rails', '~> 4.4.1'
+  spec.add_development_dependency 'rspec-rails', '~> 3.8.0'
+  spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'sqlite3', '~> 1.4.1'
 end
