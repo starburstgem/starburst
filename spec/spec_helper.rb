@@ -22,4 +22,7 @@ RSpec.configure do |config|
   config.order = "random"
 end
 
+ActiveRecord::Migrator.migrations_paths = File.join(__dir__, 'dummy', 'db', 'migrate')
+ActiveRecord::Migration.maintain_test_schema!
+
 Capybara.javascript_driver = :selenium
