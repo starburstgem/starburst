@@ -9,8 +9,8 @@ module Starburst
 		it "marks an announcement as read (twice)" do
 			current_user = instance_double(User, id: 10)
 			controller.stub(:current_user).and_return(current_user)
-			announcement = FactoryGirl.create(:announcement)
-			announcement2 = FactoryGirl.create(:announcement)
+			announcement = create(:announcement)
+			announcement2 = create(:announcement)
 			if Rails::VERSION::MAJOR < 5
 				post :mark_as_read, id: announcement.id
 			else
@@ -31,7 +31,7 @@ module Starburst
 
 		it "does not mark an announcement as read if no one is logged in" do
 			controller.stub(:current_user).and_return(nil)
-			announcement = FactoryGirl.create(:announcement)
+			announcement = create(:announcement)
 			if Rails::VERSION::MAJOR < 5
 				post :mark_as_read, id: announcement.id
 			else
