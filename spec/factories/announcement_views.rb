@@ -1,5 +1,5 @@
-FactoryBot.define do 
-        factory :announcement_view, class: Starburst::AnnouncementView do
+# frozen_string_literal: true
 
-        end
+FactoryBot.define do
+  factory :announcement_view, class: Starburst::AnnouncementView
 end
