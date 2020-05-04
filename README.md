@@ -154,7 +154,7 @@ Most Rails authentication libraries (like Devise and Clearance) place the curren
 
 ```ruby
 Starburst.configuration do |config|
-  config.current_user_method = 'current_user'
+  config.current_user_method = :current_user
 end
 ```
 

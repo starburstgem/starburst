@@ -20,7 +20,7 @@ RSpec.describe Starburst do
   describe '.current_user_method' do
     subject(:current_user_method) { starburst.current_user_method }
 
-    it { is_expected.to eq('current_user') }
+    it { is_expected.to eq(:current_user) }
   end
 
   describe '.current_user_method=' do
