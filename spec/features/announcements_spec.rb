@@ -3,15 +3,11 @@ require 'spec_helper'
 feature 'Announcements' do
 	scenario 'show announcement to user' do
 		@current_user = create(:user)
-		ActionController::Base.any_instance.stub(:current_user).and_return(@current_user)
-		ActionView::Base.any_instance.stub(:current_user).and_return(@current_user)
 		create(:announcement, :body => "My announcement")
-		visit root_path
+		visit root_path(user_id: @current_user.id)
 		page.should have_content "My announcement"
 	end
 	scenario 'show no announcements if user not logged in' do
-		ActionController::Base.any_instance.stub(:current_user).and_return(nil)
-		ActionView::Base.any_instance.stub(:current_user).and_return(nil)
 		create(:announcement, :body => "My announcement")
 		visit root_path
 		page.should_not have_content "My announcement"
@@ -19,13 +15,11 @@ feature 'Announcements' do
 	end
 	scenario 'stop showing announcement once the user has read it' do
 		@current_user = create(:user)
-		ActionController::Base.any_instance.stub(:current_user).and_return(@current_user)
-		ActionView::Base.any_instance.stub(:current_user).and_return(@current_user)
 		announcement = create(:announcement, :body => "My announcement")
-		visit root_path
+		visit root_path(user_id: @current_user.id)
 		page.should have_content "My announcement"
 		create(:announcement_view, :user => @current_user, :announcement => announcement)
-		visit root_path
+		visit root_path(user_id: @current_user.id)
 		page.should_not have_content "My announcement"
 	end
 	scenario 'allow the user to click to hide the announcement' do
