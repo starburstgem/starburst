@@ -1,9 +1,17 @@
-require "starburst/engine"
-require "helpers/starburst/configuration"
+# frozen_string_literal: true
+
+require 'starburst/engine'
 
 module Starburst
-	extend Configuration
+  mattr_accessor :current_user_method do
+    'current_user'
+  end
 
-	define_setting :current_user_method, "current_user"
-	define_setting :user_instance_methods
+  mattr_accessor :user_instance_methods do
+    nil
+  end
+
+  def self.configuration
+    yield self
+  end
 end
