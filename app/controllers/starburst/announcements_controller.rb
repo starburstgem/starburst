@@ -1,7 +1,7 @@
-require_dependency 'starburst/application_controller'
+# frozen_string_literal: true
 
 module Starburst
-	class AnnouncementsController < ApplicationController
+	class AnnouncementsController < Starburst.base_controller.constantize
 		def mark_as_read
 			announcement = Announcement.find(params[:id].to_i)
 			if respond_to?(Starburst.current_user_method) && send(Starburst.current_user_method) && announcement
