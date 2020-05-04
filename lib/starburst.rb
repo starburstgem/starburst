@@ -3,6 +3,10 @@
 require 'starburst/engine'
 
 module Starburst
+  mattr_accessor :base_controller do
+    '::ApplicationController'
+  end
+
   mattr_accessor :current_user_method do
     :current_user
   end
