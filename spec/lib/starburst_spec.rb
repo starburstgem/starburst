@@ -34,7 +34,7 @@ RSpec.describe Starburst do
   describe '.user_instance_methods' do
     subject(:user_instance_methods) { starburst.user_instance_methods }
 
-    it { is_expected.to be_nil }
+    it { is_expected.to eq([]) }
   end
 
   describe '.user_instance_methods=' do

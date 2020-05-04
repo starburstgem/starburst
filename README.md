@@ -168,7 +168,7 @@ You can target based on methods that are not in the database, but you must speci
 
 ```ruby
 Starburst.configuration do |config|
-  config.user_instance_methods = %w[free?]
+  config.user_instance_methods = %i[free?]
 end
 ```
 

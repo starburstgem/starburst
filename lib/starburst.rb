@@ -8,7 +8,7 @@ module Starburst
   end
 
   mattr_accessor :user_instance_methods do
-    nil
+    []
   end
 
   def self.configuration
