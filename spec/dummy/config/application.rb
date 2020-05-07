@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails'
 require 'active_record/railtie'
@@ -6,8 +6,7 @@ require 'action_controller/railtie'
 require 'action_view/railtie'
 require 'action_mailer/railtie'
 
-Bundler.require(*Rails.groups)
-require 'starburst'
+Bundler.require(:default, :development)
 
 module Dummy
   class Application < Rails::Application
