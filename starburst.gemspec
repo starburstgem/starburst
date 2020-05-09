@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'rails', '>= 4.2.0', '< 6.1'
 
-  spec.add_development_dependency 'appraisal', '1.0.2'
+  spec.add_development_dependency 'appraisal', '2.2.0'
   spec.add_development_dependency 'byebug'
   spec.add_development_dependency 'capybara', '~> 2.4.1'
   spec.add_development_dependency 'factory_bot_rails'
