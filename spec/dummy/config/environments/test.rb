@@ -36,4 +36,12 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # FactoryBot factories directories
+  if RUBY_VERSION < '2.3.0'
+    FactoryBot.definition_file_paths = [Rails.root.join('..', 'factories')]
+    FactoryBot.reload
+  else
+    config.factory_bot.definition_file_paths = [Rails.root.join('..', 'factories')]
+  end
 end
