@@ -1,4 +1,6 @@
-source "https://rubygems.org"
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
 
 # Declare your gem's dependencies in starburst.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -14,7 +16,7 @@ gemspec
 # gem 'debugger'
 
 group :linters do
-  gem "rubocop", "0.76.0"
-  gem "rubocop-rails", "2.4.1"
-  gem "rubocop-rspec", "1.37.1"
+  gem 'rubocop', '0.82.0'
+  gem 'rubocop-rails', '2.4.1'
+  gem 'rubocop-rspec', '1.37.1'
 end
