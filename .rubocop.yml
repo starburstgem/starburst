@@ -3,5 +3,5 @@ AllCops:
     - 'gemfiles/*.gemfile'
     - 'spec/dummy/db/schema.rb'
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
