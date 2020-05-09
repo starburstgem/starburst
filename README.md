@@ -148,13 +148,23 @@ Starburst::Announcement.create(
 
 ## Advanced configuration
 
+### Base controller
+
+By default, `Starburst::AnnouncementsController` will inherit from `ApplicationController`. If you need to change that setting in order to have access to the configured `current_user_method`, just change the `base_controller` setting:
+
+```ruby
+Starburst.configuration do |config|
+  config.base_controller = 'AuthenticatedController'
+end
+```
+
 ### Current user
 
 Most Rails authentication libraries (like Devise and Clearance) place the current user into the `current_user` method. If your authentication library uses a different method, create an initializer file for Starburst at `config/initializers/starburst.rb` and add the code below, replacing `current_user` with the name of the equivalent method in your authentication library.
 
 ```ruby
 Starburst.configuration do |config|
-  config.current_user_method = 'current_user'
+  config.current_user_method = :current_user
 end
 ```
 
@@ -168,7 +178,7 @@ You can target based on methods that are not in the database, but you must speci
 
 ```ruby
 Starburst.configuration do |config|
-  config.user_instance_methods = %w[free?]
+  config.user_instance_methods = %i[free?]
 end
 ```
 
