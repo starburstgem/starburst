@@ -1,7 +1,9 @@
+---
 AllCops:
   Exclude:
     - 'gemfiles/*.gemfile'
     - 'spec/dummy/db/schema.rb'
+  NewCops: enable
 
 Layout/LineLength:
   Max: 120
