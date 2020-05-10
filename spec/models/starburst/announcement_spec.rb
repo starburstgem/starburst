@@ -5,38 +5,38 @@ RSpec.describe Starburst::Announcement do
     it { is_expected.to validate_presence_of(:body) }
   end
 
-  context "a scheduled annoucement" do
+  describe '.current' do
+    subject { described_class.current }
 
-    it "does not show up past its end date" do
-      Announcement.create(:body => "test", :stop_delivering_at => 1.day.ago)
-      expect(Announcement.current.blank?).to eq true
+    context 'when it is expired' do
+      before { create(:announcement, stop_delivering_at: 1.minute.ago) }
+
+      it { is_expected.to be_blank }
     end
 
-    it "shows before its end date" do
-      Announcement.create(:body => "test", :stop_delivering_at => Time.current + 1.day)
-      expect(Announcement.current.present?).to eq true
+    context 'when it is not expired' do
+      before { create(:announcement, stop_delivering_at: 1.minute.from_now) }
+
+      it { is_expected.to be_present }
     end
 
-    it "does not show up before its start date" do
-      Announcement.create(:body => "test", :start_delivering_at => Time.current + 1.day)
-      expect(Announcement.current.blank?).to eq true
+    context 'when is due' do
+      before { create(:announcement, start_delivering_at: 1.minute.ago) }
+
+      it { is_expected.to be_present }
     end
 
-    it "shows after its start date" do
-      Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      expect(Announcement.current.present?).to eq true
+    context 'when it is not due yet' do
+      before { create(:announcement, start_delivering_at: 1.minute.from_now) }
+
+      it { is_expected.to be_blank }
     end
 
-    it "shows up between its start and end dates" do
-      Announcement.create(:body => "test", :start_delivering_at => Time.current, :stop_delivering_at => Time.current + 1.day)
-      expect(Announcement.current.present?).to eq true
-    end
+    context 'when no timestamps are set' do
+      before { create(:announcement, start_delivering_at: nil, stop_delivering_at: nil) }
 
-    it "does not show when its start and end dates are the same" do
-      Announcement.create(:body => "test", :start_delivering_at => Time.current, :stop_delivering_at => Time.current)
-      expect(Announcement.current.blank?).to eq true
+      it { is_expected.to be_present }
     end
-
   end
 
   context "an announcement not yet read by the current user" do
