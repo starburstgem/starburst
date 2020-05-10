@@ -1,23 +1,8 @@
-require_relative "../../spec_helper"
+# frozen_string_literal: true
 
-module Starburst
-
-describe Announcement do
-
-  context "a basic announcement" do
-
-    it "can't be created without a body" do
-      expect(Announcement.create(:body => nil).tap(&:valid?).errors[:body]).not_to be_empty
-    end
-
-    it "can be created with just a body" do
-      expect(Announcement.create(:body => "This is an announcement.")).to be_valid
-    end
-
-    it "can be created with just a title" do
-      expect(Announcement.create(:body => "This is an announcement.", :title => "Test title")).to be_valid
-    end
-
+RSpec.describe Starburst::Announcement do
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:body) }
   end
 
   context "a scheduled annoucement" do
@@ -146,9 +131,4 @@ describe Announcement do
     # end
 
   end
-
-
-
-end
-
 end
