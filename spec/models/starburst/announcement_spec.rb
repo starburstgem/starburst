@@ -39,6 +39,18 @@ RSpec.describe Starburst::Announcement do
     end
   end
 
+  describe '.ready_for_delivery' do
+    subject { described_class.ready_for_delivery }
+
+    let!(:due_announcement) { create(:announcement, start_delivering_at: 1.minute.ago) }
+    let!(:not_due_announcement) { create(:announcement, start_delivering_at: 1.minute.from_now) }
+    let!(:expired_announcement) { create(:announcement, stop_delivering_at: 1.minute.ago) }
+    let!(:not_expired_announcement) { create(:announcement, stop_delivering_at: 1.minute.from_now) }
+    let!(:unscheduled_announcement) { create(:announcement, start_delivering_at: nil, stop_delivering_at: nil) }
+
+    it { is_expected.to contain_exactly(due_announcement, not_expired_announcement, unscheduled_announcement) }
+  end
+
   describe '.unread_by' do
     subject { described_class.unread_by(current_user) }
 
