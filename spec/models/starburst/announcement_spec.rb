@@ -39,34 +39,20 @@ RSpec.describe Starburst::Announcement do
     end
   end
 
-  context "an announcement not yet read by the current user" do
+  describe '.unread_by' do
+    subject { described_class.unread_by(current_user) }
 
-    it "shows up" do
-      read_announcement = Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.current)
-      user_who_read_announcement = create(:user)
-      AnnouncementView.create(:announcement => read_announcement, :user => user_who_read_announcement)
-      expect(Announcement.unread_by(user_who_read_announcement)).to eq [unread_announcement]
+    let(:current_user) { create(:user) }
+    let(:another_user) { create(:user) }
+    let(:announcement1) { create(:announcement) }
+    let(:announcement2) { create(:announcement) }
+
+    before do
+      create(:announcement_view, user: another_user, announcement: announcement1)
+      create(:announcement_view, user: current_user, announcement: announcement2)
     end
 
-    it "shows up for the current user even when others have read it" do
-      read_announcement = Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.current)
-      user_who_read_announcement = create(:user)
-      user_who_read_no_announcements = create(:user)
-      AnnouncementView.create(:announcement => read_announcement, :user => user_who_read_announcement)
-      expect(Announcement.unread_by(user_who_read_no_announcements)).to include(unread_announcement, read_announcement)
-    end
-
-  it "shows up for the current user even when they have read other announcements" do
-      read_announcement = Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.current)
-      user_who_read_announcement = create(:user)
-      AnnouncementView.create(:announcement => read_announcement, :user => user_who_read_announcement)
-      expect(Starburst::Announcement.current(user_who_read_announcement)).to eq unread_announcement
-    end
-
-
+    it { is_expected.to contain_exactly(announcement1) }
   end
 
   context "an announcement targeted to certain users" do
