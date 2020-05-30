@@ -1,50 +1,38 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
-module Starburst
+RSpec.describe Starburst::AnnouncementsController do
+  routes { Starburst::Engine.routes }
 
-	describe AnnouncementsController, type: :controller do
+  describe '#mark_as_read' do
+    subject(:mark_as_read) do
+      if Rails::VERSION::MAJOR < 5
+        post :mark_as_read, **params
+      else
+        post :mark_as_read, params: params
+      end
+    end
 
-		routes { Starburst::Engine.routes } # http://pivotallabs.com/writing-rails-engine-rspec-controller-tests/
+    let(:announcement) { create(:announcement) }
+    let(:params) { Hash[id: announcement.id] }
 
-		it "marks an announcement as read (twice)" do
-			current_user = instance_double(User, id: 10)
-			controller.stub(:current_user).and_return(current_user)
-			announcement = create(:announcement)
-			announcement2 = create(:announcement)
-			if Rails::VERSION::MAJOR < 5
-				post :mark_as_read, id: announcement.id
-			else
-				post :mark_as_read, params: { id: announcement.id }
-			end
-			expect(response.status).to eq 200
-			expect(AnnouncementView.last.user_id).to eq 10
-			expect(AnnouncementView.all.length).to eq 1
-			if Rails::VERSION::MAJOR < 5
-				post :mark_as_read, id: announcement2.id
-			else
-				post :mark_as_read, params: { id: announcement2.id }
-			end
-			expect(response.status).to eq 200
-			expect(AnnouncementView.last.user_id).to eq 10
-			expect(AnnouncementView.all.length).to eq 2
-		end
+    before { allow(controller).to receive(:current_user).and_return(current_user) }
 
-		it "does not mark an announcement as read if no one is logged in" do
-			controller.stub(:current_user).and_return(nil)
-			announcement = create(:announcement)
-			if Rails::VERSION::MAJOR < 5
-				post :mark_as_read, id: announcement.id
-			else
-				post :mark_as_read, params: { id: announcement.id }
-			end
-			expect(response.status).to eq 422
-			expect(AnnouncementView.all.length).to eq 0
-		end
+    context 'with a signed in user' do
+      let(:current_user) { instance_double(User, id: 10) }
+      let(:announcement_view) { an_object_having_attributes(user_id: current_user.id) }
 
-		it "has a helper path for mark as read" do
-			expect(mark_as_read_path(1)).to eq "/starburst/announcements/1/mark_as_read"
-		end
+      it { expect(mark_as_read).to have_http_status(:ok) }
 
-	end
+      it 'marks the announcement as viewed by the signed in user' do
+        expect { mark_as_read }.to change(Starburst::AnnouncementView, :all).to contain_exactly(announcement_view)
+      end
+    end
 
+    context 'without a signed in user' do
+      let(:current_user) { nil }
+
+      it { expect(mark_as_read).to have_http_status(:unprocessable_entity) }
+      it { expect { mark_as_read }.not_to change(Starburst::AnnouncementView, :count) }
+    end
+  end
 end

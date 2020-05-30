@@ -1,9 +1,9 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 RSpec.describe Starburst do
   subject(:starburst) { described_class }
 
-  around(:each) do |example|
+  around do |example|
     # copies original settings
     original_settings = described_class.class_variables.each_with_object({}) do |setting, configuration|
       configuration[setting] = described_class.class_variable_get(setting)

@@ -1,154 +1,243 @@
-require_relative "../../spec_helper"
+# frozen_string_literal: true
 
-module Starburst
-
-describe Announcement do
-
-  context "a basic announcement" do
-
-    it "can't be created without a body" do
-      expect(Announcement.create(:body => nil).tap(&:valid?).errors[:body]).not_to be_empty
-    end
-
-    it "can be created with just a body" do
-      expect(Announcement.create(:body => "This is an announcement.")).to be_valid
-    end
-
-    it "can be created with just a title" do
-      expect(Announcement.create(:body => "This is an announcement.", :title => "Test title")).to be_valid
-    end
-
+RSpec.describe Starburst::Announcement do
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:body) }
   end
 
-  context "a scheduled annoucement" do
+  describe '.current' do
+    subject { described_class.current(user) }
 
-    it "does not show up past its end date" do
-      Announcement.create(:body => "test", :stop_delivering_at => 1.day.ago)
-      expect(Announcement.current.blank?).to eq true
+    let(:user) { create(:user) }
+
+    shared_examples 'oldest unread announcement' do
+      it { is_expected.to eq(first_announcement) }
+
+      context 'when a previous announcement has already been seen' do
+        before { create(:announcement_view, user: user, announcement: first_announcement) }
+
+        it { is_expected.to eq(second_announcement) }
+      end
     end
 
-    it "shows before its end date" do
-      Announcement.create(:body => "test", :stop_delivering_at => Time.current + 1.day)
-      expect(Announcement.current.present?).to eq true
+    context 'when it is expired' do
+      before { create(:announcement, stop_delivering_at: 1.minute.ago) }
+
+      it { is_expected.to be_nil }
     end
 
-    it "does not show up before its start date" do
-      Announcement.create(:body => "test", :start_delivering_at => Time.current + 1.day)
-      expect(Announcement.current.blank?).to eq true
+    context 'when it is not expired yet' do
+      let!(:first_announcement) do
+        create(
+          :announcement,
+          start_delivering_at: 2.minutes.ago,
+          stop_delivering_at: 10.minutes.from_now
+        )
+      end
+      let!(:second_announcement) do
+        create(
+          :announcement,
+          start_delivering_at: 1.minute.ago,
+          stop_delivering_at: 10.minutes.from_now
+        )
+      end
+
+      include_examples 'oldest unread announcement'
     end
 
-    it "shows after its start date" do
-      Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      expect(Announcement.current.present?).to eq true
+    context 'when it is due' do
+      let!(:first_announcement) { create(:announcement, start_delivering_at: 2.minutes.ago) }
+      let!(:second_announcement) { create(:announcement, start_delivering_at: 1.minute.ago) }
+
+      include_examples 'oldest unread announcement'
     end
 
-    it "shows up between its start and end dates" do
-      Announcement.create(:body => "test", :start_delivering_at => Time.current, :stop_delivering_at => Time.current + 1.day)
-      expect(Announcement.current.present?).to eq true
+    context 'when it is not due yet' do
+      before { create(:announcement, start_delivering_at: 1.minute.from_now) }
+
+      it { is_expected.to be_nil }
     end
 
-    it "does not show when its start and end dates are the same" do
-      Announcement.create(:body => "test", :start_delivering_at => Time.current, :stop_delivering_at => Time.current)
-      expect(Announcement.current.blank?).to eq true
+    context 'when no timestamps are set' do
+      let!(:first_announcement) { create(:announcement, start_delivering_at: nil, stop_delivering_at: nil) }
+      let!(:second_announcement) { create(:announcement, start_delivering_at: nil, stop_delivering_at: nil) }
+
+      include_examples 'oldest unread announcement'
     end
 
+    context 'when there are announcements with an attribute condition' do
+      let!(:first_announcement) do
+        create(
+          :announcement,
+          start_delivering_at: 2.minutes.ago,
+          limit_to_users: [
+            {
+              field: 'subscription',
+              value: 'weekly'
+            }
+          ]
+        )
+      end
+      let!(:second_announcement) do
+        create(
+          :announcement,
+          start_delivering_at: 1.minutes.ago,
+          limit_to_users: [
+            {
+              field: 'subscription',
+              value: 'weekly'
+            }
+          ]
+        )
+      end
+
+      context 'when the user should see the announcements' do
+        let(:user) { create(:user, subscription: 'weekly') }
+
+        include_examples 'oldest unread announcement'
+      end
+
+      context 'when the user should not see the announcements' do
+        let(:user) { create(:user, subscription: 'monthly') }
+
+        it { is_expected.to be_nil }
+      end
+    end
+
+    context 'when there are announcements with a method condition' do
+      let!(:first_announcement) do
+        create(
+          :announcement,
+          start_delivering_at: 2.minutes.ago,
+          limit_to_users: [
+            {
+              field: 'free?',
+              value: true
+            }
+          ]
+        )
+      end
+      let!(:second_announcement) do
+        create(
+          :announcement,
+          start_delivering_at: 1.minute.ago,
+          limit_to_users: [
+            {
+              field: 'free?',
+              value: true
+            }
+          ]
+        )
+      end
+
+      before { allow(Starburst).to receive(:user_instance_methods).and_return(%i[free?]) }
+
+      context 'when the user should see the announcement' do
+        let(:user) { create(:user, subscription: '') }
+
+        include_examples 'oldest unread announcement'
+      end
+
+      context 'when the user should not see the announcement' do
+        let(:user) { create(:user, subscription: 'monthly') }
+
+        it { is_expected.to be_nil }
+      end
+    end
   end
 
-  context "an announcement not yet read by the current user" do
+  describe '.in_delivery_order' do
+    subject { described_class.in_delivery_order }
 
-    it "shows up" do
-      read_announcement = Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.current)
-      user_who_read_announcement = create(:user)
-      AnnouncementView.create(:announcement => read_announcement, :user => user_who_read_announcement)
-      expect(Announcement.unread_by(user_who_read_announcement)).to eq [unread_announcement]
-    end
+    let!(:first_announcement) { create(:announcement, start_delivering_at: 2.minutes.ago) }
+    let!(:second_announcement) { create(:announcement, start_delivering_at: 1.minute.ago) }
 
-    it "shows up for the current user even when others have read it" do
-      read_announcement = Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.current)
-      user_who_read_announcement = create(:user)
-      user_who_read_no_announcements = create(:user)
-      AnnouncementView.create(:announcement => read_announcement, :user => user_who_read_announcement)
-      expect(Announcement.unread_by(user_who_read_no_announcements)).to include(unread_announcement, read_announcement)
-    end
-
-  it "shows up for the current user even when they have read other announcements" do
-      read_announcement = Announcement.create(:body => "test", :start_delivering_at => 1.day.ago)
-      unread_announcement = Announcement.create(:body => "test", :start_delivering_at => Time.current)
-      user_who_read_announcement = create(:user)
-      AnnouncementView.create(:announcement => read_announcement, :user => user_who_read_announcement)
-      expect(Starburst::Announcement.current(user_who_read_announcement)).to eq unread_announcement
-    end
-
-
+    it { is_expected.to eq([first_announcement, second_announcement]) }
   end
 
-  context "an announcement targeted to certain users" do
-    it "has a limited_to_users field that is retrieveable from the database" do
-      limited_announcement = Announcement.create(:body => "test", :limit_to_users => [
-        {
-          :field => "subscription",
-          :value => "",
-          :operator => "="
-        }
-      ])
-      expect(limited_announcement.limit_to_users[0][:field]).to eq "subscription"
-    end
+  describe '.ready_for_delivery' do
+    subject { described_class.ready_for_delivery }
 
-    it "shows up for the proper user only (one positive condition)" do
-      limited_announcement = Announcement.create(:body => "test", :limit_to_users => [
-        {
-          :field => "subscription",
-          :value => ""
-        }
-      ])
-      user_who_should_see_announcement = create(:user, :subscription => "")
-      user_who_should_not_see_announcement = create(:user, :subscription => "monthly")
-      expect(Announcement.find_announcement_for_current_user(Announcement.where(nil), user_who_should_see_announcement)).to eq limited_announcement
-      expect(Announcement.find_announcement_for_current_user(Announcement.where(nil), user_who_should_not_see_announcement)).to eq nil
-    end
+    let!(:due_announcement) { create(:announcement, start_delivering_at: 1.minute.ago) }
+    let!(:not_due_announcement) { create(:announcement, start_delivering_at: 1.minute.from_now) }
+    let!(:expired_announcement) { create(:announcement, stop_delivering_at: 1.minute.ago) }
+    let!(:not_expired_announcement) { create(:announcement, stop_delivering_at: 1.minute.from_now) }
+    let!(:unscheduled_announcement) { create(:announcement, start_delivering_at: nil, stop_delivering_at: nil) }
 
-    it "shows up for the proper user only (method condition)" do
-      allow(Starburst).to receive(:user_instance_methods).and_return(%i[free?])
-      limited_announcement = Announcement.create(:body => "test", :limit_to_users => [
-        {
-          :field => "free?",
-          :value => true
-        }
-      ])
-      user_who_should_see_announcement = create(:user, :subscription => "")
-      user_who_should_not_see_announcement = create(:user, :subscription => "monthly")
-      expect(Announcement.find_announcement_for_current_user(Announcement.where(nil), user_who_should_see_announcement)).to eq limited_announcement
-      expect(Announcement.find_announcement_for_current_user(Announcement.where(nil), user_who_should_not_see_announcement)).to eq nil
-    end
-
-    # it "performs" do
-    #   pending
-    #   require 'benchmark'
-
-    #   (1 .. 500).each do
-    #     Announcement.create(:limit_to_users => [
-    #       {
-    #         :field => "subscription",
-    #         :value => ""
-    #       }
-    #     ])
-    #   end
-
-    #   (1 .. 10000).each do
-    #     create(:user, :subscription => "")
-    #   end
-
-    #   Benchmark.realtime{
-    #   Announcement.current(User.last)
-    #   }
-    # end
-
+    it { is_expected.to contain_exactly(due_announcement, not_expired_announcement, unscheduled_announcement) }
   end
 
+  describe '.unread_by' do
+    subject { described_class.unread_by(current_user) }
 
+    let(:current_user) { create(:user) }
+    let(:another_user) { create(:user) }
+    let(:announcement1) { create(:announcement) }
+    let(:announcement2) { create(:announcement) }
 
-end
+    before do
+      create(:announcement_view, user: another_user, announcement: announcement1)
+      create(:announcement_view, user: current_user, announcement: announcement2)
+    end
 
+    it { is_expected.to contain_exactly(announcement1) }
+  end
+
+  describe '.find_announcement_for_current_user' do
+    subject { described_class.find_announcement_for_current_user(described_class.all, user) }
+
+    context 'with an attribute condition' do
+      let!(:announcement) do
+        create(
+          :announcement,
+          limit_to_users: [
+            {
+              field: 'subscription',
+              value: 'weekly'
+            }
+          ]
+        )
+      end
+
+      context 'when the user should see the announcement' do
+        let(:user) { create(:user, subscription: 'weekly') }
+
+        it { is_expected.to eq(announcement) }
+      end
+
+      context 'when the user should not see the announcement' do
+        let(:user) { create(:user, subscription: 'monthly') }
+
+        it { is_expected.to be_nil }
+      end
+    end
+
+    context 'with a method condition' do
+      let!(:announcement) do
+        create(
+          :announcement,
+          limit_to_users: [
+            {
+              field: 'free?',
+              value: true
+            }
+          ]
+        )
+      end
+
+      before { allow(Starburst).to receive(:user_instance_methods).and_return(%i[free?]) }
+
+      context 'when the user should see the announcement' do
+        let(:user) { create(:user, subscription: '') }
+
+        it { is_expected.to eq(announcement) }
+      end
+
+      context 'when the user should not see the announcement' do
+        let(:user) { create(:user, subscription: 'monthly') }
+
+        it { is_expected.to be_nil }
+      end
+    end
+  end
 end
