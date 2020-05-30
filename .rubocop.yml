@@ -1,9 +1,44 @@
 ---
+require: rubocop-rspec
+
 AllCops:
   Exclude:
     - 'gemfiles/*.gemfile'
     - 'spec/dummy/db/schema.rb'
   NewCops: enable
 
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
 Layout/LineLength:
   Max: 120
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/factories/**/*.rb'
+    - 'spec/**/*_spec.rb'
+
+Rails:
+  Enabled: true
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/**/*_spec.rb'
+
+RSpec/LetSetup:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/features/**/*_spec.rb'
+
+RSpec/NestedGroups:
+  Max: 5
