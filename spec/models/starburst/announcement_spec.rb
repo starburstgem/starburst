@@ -134,6 +134,15 @@ RSpec.describe Starburst::Announcement do
     end
   end
 
+  describe '.in_delivery_order' do
+    subject { described_class.in_delivery_order }
+
+    let!(:first_announcement) { create(:announcement, start_delivering_at: 2.minutes.ago) }
+    let!(:second_announcement) { create(:announcement, start_delivering_at: 1.minute.ago) }
+
+    it { is_expected.to eq([first_announcement, second_announcement]) }
+  end
+
   describe '.ready_for_delivery' do
     subject { described_class.ready_for_delivery }
 
