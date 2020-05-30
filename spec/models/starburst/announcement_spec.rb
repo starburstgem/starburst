@@ -27,8 +27,20 @@ RSpec.describe Starburst::Announcement do
     end
 
     context 'when it is not expired yet' do
-      let!(:first_announcement) { create(:announcement, start_delivering_at: 2.minutes.ago, stop_delivering_at: 10.minutes.from_now) }
-      let!(:second_announcement) { create(:announcement, start_delivering_at: 1.minute.ago, stop_delivering_at: 10.minutes.from_now) }
+      let!(:first_announcement) do
+        create(
+          :announcement,
+          start_delivering_at: 2.minutes.ago,
+          stop_delivering_at: 10.minutes.from_now
+        )
+      end
+      let!(:second_announcement) do
+        create(
+          :announcement,
+          start_delivering_at: 1.minute.ago,
+          stop_delivering_at: 10.minutes.from_now
+        )
+      end
 
       include_examples 'oldest unread announcement'
     end
