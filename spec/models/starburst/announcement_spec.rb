@@ -20,9 +20,9 @@ RSpec.describe Starburst::Announcement do
       end
     end
 
-    context 'when the provided User is nil' do
+    context 'when the provided user is nil' do
       let(:user) { nil }
-      let(:message) { 'User is required to find current Announcement' }
+      let(:message) { 'User is required to find current announcement' }
 
       it { expect { current }.to raise_error(ArgumentError).with_message(message) }
     end
