@@ -19,12 +19,22 @@ RSpec.describe Starburst::AnnouncementsController do
 
     context 'with a signed in user' do
       let(:current_user) { instance_double(User, id: 10) }
-      let(:announcement_view) { an_object_having_attributes(user_id: current_user.id) }
 
-      it { expect(mark_as_read).to have_http_status(:ok) }
+      context 'when the user has not marked the announcement as read yet' do
+        let(:announcement_view) { an_object_having_attributes(user_id: current_user.id) }
 
-      it 'marks the announcement as viewed by the signed in user' do
-        expect { mark_as_read }.to change(Starburst::AnnouncementView, :all).to contain_exactly(announcement_view)
+        it { expect(mark_as_read).to have_http_status(:ok) }
+
+        it 'marks the announcement as viewed by the signed in user' do
+          expect { mark_as_read }.to change(Starburst::AnnouncementView, :all).to contain_exactly(announcement_view)
+        end
+      end
+
+      context 'when the user has already marked the announcement as read' do
+        before { create(:announcement_view, user_id: current_user.id, announcement: announcement) }
+
+        it { expect(mark_as_read).to have_http_status(:ok) }
+        it { expect { mark_as_read }.not_to change(Starburst::AnnouncementView, :count) }
       end
     end
 

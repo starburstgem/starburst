@@ -5,10 +5,6 @@ module Starburst
 
 		serialize :limit_to_users
 
-		if Rails::VERSION::MAJOR < 4
-			attr_accessible :title, :body, :start_delivering_at, :stop_delivering_at, :limit_to_users
-		end
-
 		scope :ready_for_delivery, lambda {
 			where("(start_delivering_at < ? OR start_delivering_at IS NULL)
 				AND (stop_delivering_at > ? OR stop_delivering_at IS NULL)", Time.current, Time.current)
@@ -23,12 +19,10 @@ module Starburst
 
 		scope :in_delivery_order, lambda { order("start_delivering_at ASC")}
 
-		def self.current(current_user = nil)
-			if current_user
-				find_announcement_for_current_user(ready_for_delivery.unread_by(current_user).in_delivery_order, current_user)
-			else
-				ready_for_delivery.in_delivery_order.first
-			end
+		def self.current(current_user)
+			raise ArgumentError, 'User is required to find current announcement' unless current_user.present?
+
+			find_announcement_for_current_user(ready_for_delivery.unread_by(current_user).in_delivery_order, current_user)
 		end
 
 		def self.find_announcement_for_current_user(announcements, user)
