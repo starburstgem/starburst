@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
     'source_code_uri'   => spec.homepage
   }
 
-  spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
+  spec.files = Dir['{app,config,db,lib}/**/*', 'LICENSE.txt', 'Rakefile', 'README.rdoc']
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'rails', '>= 4.2.0', '< 6.1'
