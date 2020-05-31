@@ -21,7 +21,17 @@ Gem::Specification.new do |spec|
     'source_code_uri'   => spec.homepage
   }
 
-  spec.files = Dir['{app,config,db,lib}/**/*', 'LICENSE.txt', 'Rakefile', 'README.rdoc']
+  spec.files = Dir['{app,config,db,lib}/**/*']
+
+  spec.extra_rdoc_files = Dir['CHANGELOG.md', 'LICENSE.txt', 'README.md']
+  spec.rdoc_options    += [
+    '--title', 'Starburst',
+    '--main', 'README.md',
+    '--line-numbers',
+    '--inline-source',
+    '--quiet'
+  ]
+
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'rails', '>= 4.2.0', '< 6.1'
