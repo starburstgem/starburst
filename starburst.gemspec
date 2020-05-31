@@ -32,8 +32,6 @@ Gem::Specification.new do |spec|
     '--quiet'
   ]
 
-  spec.require_paths = ['lib']
-
   spec.add_runtime_dependency 'rails', '>= 4.2.0', '< 6.1'
 
   spec.add_development_dependency 'appraisal', '2.2.0'
