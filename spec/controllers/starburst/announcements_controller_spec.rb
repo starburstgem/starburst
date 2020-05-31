@@ -18,7 +18,7 @@ RSpec.describe Starburst::AnnouncementsController do
     before { allow(controller).to receive(:current_user).and_return(current_user) }
 
     context 'with a signed in user' do
-      let(:current_user) { instance_double(User, id: 10) }
+      let(:current_user) { create(:user) }
 
       context 'when the user has not marked the announcement as read yet' do
         let(:announcement_view) { an_object_having_attributes(user_id: current_user.id) }
