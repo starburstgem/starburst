@@ -46,3 +46,7 @@ RSpec/MultipleExpectations:
 
 RSpec/NestedGroups:
   Max: 5
+
+Style/Documentation:
+  Exclude:
+    - 'spec/dummy/**/*.rb'
