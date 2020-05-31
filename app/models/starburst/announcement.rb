@@ -5,10 +5,6 @@ module Starburst
 
 		serialize :limit_to_users
 
-		if Rails::VERSION::MAJOR < 4
-			attr_accessible :title, :body, :start_delivering_at, :stop_delivering_at, :limit_to_users
-		end
-
 		scope :ready_for_delivery, lambda {
 			where("(start_delivering_at < ? OR start_delivering_at IS NULL)
 				AND (stop_delivering_at > ? OR stop_delivering_at IS NULL)", Time.current, Time.current)
