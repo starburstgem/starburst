@@ -10,6 +10,9 @@ AllCops:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+
 Layout/LineLength:
   Max: 120
 
@@ -22,6 +25,7 @@ Layout/ParameterAlignment:
 Metrics/BlockLength:
   Exclude:
     - 'Rakefile'
+    - '*.gemspec'
     - '**/*.rake'
     - 'spec/factories/**/*.rb'
     - 'spec/**/*_spec.rb'
