@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-lib = File.expand_path('lib', __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'starburst/version'
+require_relative 'lib/starburst/version'
 
 Gem::Specification.new do |spec|
   spec.name        = 'starburst'
@@ -15,12 +13,24 @@ Gem::Specification.new do |spec|
   spec.homepage    = 'https://github.com/starburstgem/starburst'
   spec.license     = 'MIT'
 
-  spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = spec.homepage
-  spec.metadata['changelog_uri'] = 'https://github.com/starburstgem/starburst/blob/master/CHANGELOG.md'
+  spec.metadata = {
+    'bug_tracker_uri'   => "#{spec.homepage}/issues",
+    'changelog_uri'     => "#{spec.homepage}/blob/master/CHANGELOG.md",
+    'documentation_uri' => spec.homepage,
+    'homepage_uri'      => spec.homepage,
+    'source_code_uri'   => spec.homepage
+  }
 
-  spec.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
-  spec.require_paths = ['lib']
+  spec.files = Dir['{app,config,db,lib}/**/*']
+
+  spec.extra_rdoc_files = Dir['CHANGELOG.md', 'LICENSE.txt', 'README.md']
+  spec.rdoc_options    += [
+    '--title', 'Starburst',
+    '--main', 'README.md',
+    '--line-numbers',
+    '--inline-source',
+    '--quiet'
+  ]
 
   spec.add_runtime_dependency 'rails', '>= 4.2.0', '< 6.1'
 

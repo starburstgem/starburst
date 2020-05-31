@@ -1,12 +1,8 @@
-require 'bundler/setup'
-require 'bundler/gem_tasks'
-require 'appraisal'
+# frozen_string_literal: true
 
+require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
+
 RSpec::Core::RakeTask.new(:spec)
 
-task :default => ['appraisal:install']
-
-task :appraise => ['appraisal:install'] do |t|
-  exec 'rake appraisal'
-end
+task default: :spec
