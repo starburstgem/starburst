@@ -10,6 +10,10 @@ AllCops:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
+Layout/EmptyLineAfterMagicComment:
+  Exclude:
+    - 'spec/dummy/db/migrate/*.rb'
+
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
 
@@ -30,6 +34,11 @@ Metrics/BlockLength:
     - 'spec/factories/**/*.rb'
     - 'spec/**/*_spec.rb'
 
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*.rb'
+    - 'spec/dummy/db/migrate/*.rb'
+
 Rails:
   Enabled: true
 
@@ -49,4 +58,5 @@ RSpec/NestedGroups:
 
 Style/Documentation:
   Exclude:
+    - 'db/migrate/*.rb'
     - 'spec/dummy/**/*.rb'

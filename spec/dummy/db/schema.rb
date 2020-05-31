@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_191638) do
+ActiveRecord::Schema.define(version: 2020_05_31_150819) do
 
   create_table "starburst_announcement_views", force: :cascade do |t|
     t.integer "user_id"

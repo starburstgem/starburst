@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateAnnouncementTables < ActiveRecord::Migration[4.2]
   def change
     create_table :starburst_announcement_views do |t|
