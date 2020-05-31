@@ -6,7 +6,7 @@ RSpec.describe Starburst::Announcement do
   end
 
   describe '.current' do
-    subject { described_class.current(user) }
+    subject(:current) { described_class.current(user) }
 
     let(:user) { create(:user) }
 
@@ -18,6 +18,13 @@ RSpec.describe Starburst::Announcement do
 
         it { is_expected.to eq(second_announcement) }
       end
+    end
+
+    context 'when the provided User is nil' do
+      let(:user) { nil }
+      let(:message) { 'User is required to find current Announcement' }
+
+      it { expect { current }.to raise_error(ArgumentError).with_message(message) }
     end
 
     context 'when it is expired' do
