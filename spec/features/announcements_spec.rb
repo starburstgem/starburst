@@ -13,7 +13,7 @@ RSpec.describe 'Announcements' do
       expect(page).to have_content(announcement.body)
     end
 
-    skip 'hides the announcement if the user closes it', js: true, driver: :selenium_chrome_headless do
+    it 'hides the announcement if the user closes it', js: true, driver: :selenium_chrome_headless do
       expect(page).to have_content(announcement.body)
       find('#starburst-close').click
       expect(page).not_to have_content(announcement.body)
