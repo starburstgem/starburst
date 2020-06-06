@@ -1,0 +1,7 @@
+<% if Rails.version >= '5.1.0' %>
+  <%= require_asset 'rails-ujs' %>
+<% else %>
+  <%= require_asset 'jquery' %>
+  <%= require_asset 'jquery_ujs' %>
+<% end %>
+<%= require_asset 'starburst/starburst' %>
