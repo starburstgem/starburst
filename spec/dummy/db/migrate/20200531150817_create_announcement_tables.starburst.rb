@@ -1,4 +1,6 @@
+# frozen_string_literal: true
 # This migration comes from starburst (originally 20141004214002)
+
 class CreateAnnouncementTables < ActiveRecord::Migration[4.2]
   def change
     create_table :starburst_announcement_views do |t|

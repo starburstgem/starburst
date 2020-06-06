@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# This migration comes from starburst (originally 20141209221904)
 
 class AddIndexAndUniquenessToAnnouncementViews < ActiveRecord::Migration[4.2]
   def change
