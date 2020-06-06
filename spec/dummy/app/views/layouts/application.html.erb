@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dummy</title>
+  <title>Starburst Announcement Example App</title>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application' %>
 </head>
 <body>
-<%= render :partial => "announcements/starburst/announcement_bootstrap" %>
-<%= yield %>
-
+  <%= yield %>
 </body>
 </html>
