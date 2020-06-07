@@ -14,9 +14,3 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
-
-group :linters do
-  gem 'rubocop', '0.83.0'
-  gem 'rubocop-rails', '2.5.2'
-  gem 'rubocop-rspec', '1.39.0'
-end
