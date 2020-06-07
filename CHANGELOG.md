@@ -1,5 +1,8 @@
 ### 2.0.0 (Unreleased)
 
+### Bug fixes
+* Announcements rendered with the Foundation partial should be processed correctly when closed.
+
 #### Breaking changes
 * Drops support for Rails versions 3.0, 3.1, 3.2, 4.0 and 4.1.
 * Raises an error if `Starburst::Announcement.current` is called with a `nil` argument.

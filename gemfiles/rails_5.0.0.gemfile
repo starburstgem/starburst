@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem "jquery-rails", "~> 4.4.0"
 gem "rails", "~> 5.0.0"
 gem "rspec-rails", "~> 3.9.0"
 gem "shoulda-matchers", "~> 3.1.0"
