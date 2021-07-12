@@ -41,7 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'factory_bot_rails', '>= 4.11.1', '< 6'
   spec.add_development_dependency 'rspec-rails', '~> 4.0'
   spec.add_development_dependency 'selenium-webdriver', '>= 3.141.0', '< 4'
-  spec.add_development_dependency 'shoulda-matchers', '~> 4.3'
+  spec.add_development_dependency 'shoulda-matchers', '~> 5.0'
   spec.add_development_dependency 'simplecov', '>= 0.17.1', '< 1'
   spec.add_development_dependency 'sprockets-rails', '~> 3.2'
   spec.add_development_dependency 'sqlite3', '~> 1.4'
